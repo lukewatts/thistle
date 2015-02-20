@@ -44,10 +44,10 @@
 
     <!-- FACEBOOK -->
     <meta property="og:image" content="<?php base_url(); ?>/assets/img/avatar.png">
-    <meta property="og:title" content="<?php $page_name = ( $url->is_home() ) ? 'home' : $url->get_page_name(); $page_meta[$page_name]['title'] ?>">
-    <meta property="og:site_name" content="<?php $site['title']; ?>">
+    <meta property="og:title" content="<?php $page_name = ( $url->is_home() ) ? 'index' : $url->get_page_name(); echo $page_meta[$page_name]['name'] ?>"> <?php // TODO: Make this...nicer ?>
+    <meta property="og:site_name" content="<?php echo $site['title']; ?>">
     <meta property="og:url" content="<?php $url->uri(); ?>">
-    <meta property="og:description" content="<?php $site['description']; ?>">
+    <meta property="og:description" content="<?php echo $site['description']; ?>">
 
     <!-- STYLES -->
 	<?php $html->css( 'css/normalize.css' ); ?>
@@ -70,7 +70,7 @@
             <a href="<?php $url->page( 'sample-page' ); ?>">Sample Page</a>
           </li>
   		  </ul>
-        
+
   		</nav>
 
   	</header>
