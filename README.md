@@ -1,9 +1,9 @@
 - **Name:** Thistle
-- **Description:** Thistle is a small, modular framework for quickly turning a normal static html site into a "hybrid" CMS.
-- **Authors:** Luke Watts, Affinity4
+- **Description:** Thistle is a small, modular framework for quickly turning a normal "static" html site into a "hybrid" CMS.
+- **Authors:** Luke Watts (Affinity4.ie)
 - **Author Website:** http://affinity4.ie
 - **Version:** 3.0.0
-- **License:** GPLv3
+- **License:** MIT
 
 Thistle is a small, modular framework for quickly turning a normal static html site into a "hybrid" CMS.
 
