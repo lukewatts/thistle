@@ -185,7 +185,7 @@ class HTTP {
    * is passed in it will simply echo the page it is on.
    * 
    * @param  string $page name of the page you wish to link to
-   * @return NULL void
+   * @return void
    *
    * @since  1.0.0
    */

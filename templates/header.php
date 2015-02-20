@@ -19,7 +19,7 @@
 
     <!-- SEO -->
     <meta name="description" content="<?php echo $site['description']; ?>">
-    <meta name="robots" content="<?php $robots = ( $site['searchable'] == true ) : 'INDEX,FOLLOW' ? 'NOINDEX, NOFOLLOW'; ?>">
+    <meta name="robots" content="<?php $robots = ( $site['searchable'] == true ) ? 'INDEX,FOLLOW' : 'NOINDEX, NOFOLLOW'; echo $robots; ?>">
     <meta author="<?php echo $site['author']; ?>">
 
     <!-- CANONICAL META -->
@@ -44,7 +44,7 @@
 
     <!-- FACEBOOK -->
     <meta property="og:image" content="<?php base_url(); ?>/assets/img/avatar.png">
-    <meta property="og:title" content="<?php $page[$url->get_page_uri()]['title'] ?>">
+    <meta property="og:title" content="<?php $page_name = ( $url->is_home() ) ? 'home' : $url->get_page_name(); $page_meta[$page_name]['title'] ?>">
     <meta property="og:site_name" content="<?php $site['title']; ?>">
     <meta property="og:url" content="<?php $url->uri(); ?>">
     <meta property="og:description" content="<?php $site['description']; ?>">
@@ -59,14 +59,18 @@
   	
   	<!-- HEADER -->
   	<header id="site-header" class="site=-header" role="banner">
+
   		<nav id="main-nav" class="main-nav" role="navigation">
-  		 <ul class="top-level-menu">
+  		  
+        <ul class="top-level-menu">
   		 		<li class="menu-item <?php echo ( $url->is_home() ) ? 'active' : ''; ?>">
             <a href="<?php $url->home_uri(); ?>">Home</a>
           </li>
           <li class="menu-item <?php echo ( $url->is_page( 'sample-page' ) ) ? 'active' : ''; ?>">
             <a href="<?php $url->page( 'sample-page' ); ?>">Sample Page</a>
           </li>
-  		 </ul>
+  		  </ul>
+        
   		</nav>
+
   	</header>
