@@ -36,7 +36,7 @@ class Environment {
       else {
         $this->environment['ENV'] =  'production';
       }
-      return true; // Won't work without this...I have no idea why
+      return true; // IMPORTANT: Won't work without this...I have no idea why
     }
     else {
       $this->environment['ENV'] = $env;

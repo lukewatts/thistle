@@ -53,6 +53,7 @@ $plugin = new Plugin();
 
 /*
 // TODO: Find better way of including the mail scripts...or just have them loaded sitewide as a boolean setting.
+// Requires Composer so would need checks to happen.
 if ( $url->is_page( 'contact' ) ) {
 
   require_once( 'config/mail.php' );
