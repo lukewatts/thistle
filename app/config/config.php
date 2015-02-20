@@ -10,8 +10,9 @@ $site = array(
   'lang'        => 'en',         // Used on the <html lang="..."> tag
   'charset'     => 'utf-8',      // Used on <meta charset="...">
   'assets'      => 'assets',     // Used in the HTML::css() and HTML::js() methods. Change if you rename assets dir
-  'searchable'  => true,         // Turn this to true to allow search engines to crawl and index pages.
-  'url'         => '', // If urls are being incorrectly generated add the full url with trailing slash here ( 'http://example.com/' )
+  'searchable'  => false,        // Turn this to true to allow search engines to crawl and index pages.
+  'url'         => '', // If urls are being incorrectly generated add the full url WITH a trailing slash here ( 'http://example.com/' )
+  // Urls are known to be incorrectly generated if index.php is in a subdirectory of your servers root (e.g. http://example.com/sites/your-website)
 );
 
 /*
