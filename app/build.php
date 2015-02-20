@@ -32,32 +32,27 @@ if ( $debug_mode == true ) ini_set('display_errors', 1);
 /**
  * @since 1.2.0
  */
-if ( PHP_VERSION < '5.3.2' ) {
-/*
-  // TODO: Use spl_autoloader which was added in php 5.1.2
-  require_once( $path['app'] . '/libs/Environment.php' );
-  require_once( $path['app'] . '/libs/FileHandler.php' );
-  require_once( $path['app'] . '/libs/HTTP.php' );
-  require_once( $path['app'] . '/libs/HTML.php' );
-  require_once( $path['app'] . '/libs/Helpers.php' );
-  require_once( $path['app'] . '/libs/Meta.php' );
-  require_once( $path['app'] . '/libs/Plugin.php' );
-  require_once( $path['app'] . '/libs/ErrorHandler.php' );
-  require_once( $path['app'] . '/libs/Validator.php' );
-*/
+if ( PHP_VERSION < '5.3.2' || $development_mode == true ) {
+  
+  /**
+   * @since 2.2.0
+   */
+  require_once( 'autoload.php' );
+
 }
 else {
   if ( file_exists( $path['base'] . '/vendor' . '/autoload.php' ) ) require_once( $path['base'] . '/vendor' . '/autoload.php' );
 }
-/*
+
 $env = new Environment( $environment );
 $url = new HTTP();
 $html = new HTML();
 $helper = new Helper();
 $meta = new Meta( $url );
 $plugin = new Plugin();
-*/
+
 /*
+// TODO: Find better way of including the mail scripts...or just have them loaded sitewide as a boolean setting.
 if ( $url->is_page( 'contact' ) ) {
 
   require_once( 'config/mail.php' );

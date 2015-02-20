@@ -50,9 +50,10 @@ $page_meta = array(
  */
 $active_plugins = array();
 
+
 /* ==============================
  * ADVANCED SETTINGS
  * ============================== */
-$environment = ''; // Only change this if you know the implications
-$debug_mode = '';  // Turn this to true to enable php errors on production servers
-$development_mode = ''; // Turn this to true to use non-minified resources (css | js)
+$development_mode = true; // Turn this to true to use non-minified resources (css | js). DEFAULT: false
+$debug_mode = false;  // Turn this to true to enable php errors on production servers. DEFAULT: false
+$environment = ''; // Only change this if you know the implications. DEFAULT: ''
