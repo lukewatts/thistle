@@ -16,5 +16,5 @@ if ( !defined('__DIR__') ) define( '__DIR__', dirname( __FILE__ ) );
 $path = array(
   'base'    => str_replace( '\\', '/', dirname( __DIR__ ) ),
   'app'     => str_replace( '\\', '/', __DIR__ ),
-  'admin'   => str_replace( '\\', '/', __DIR__ . '/admin' )
+  'admin'   => str_replace( '\\', '/', dirname( __DIR__ ) . '/admin' )
 );

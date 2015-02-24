@@ -2,4 +2,7 @@
 
 require_once( dirname( dirname(__FILE__) ) . '/app/build.php' );
 
-require_once( $path['admin'] . 'core/init.php' );
+require_once( $path['admin'] . '/core/init.php' );
+
+?>
+<h1>Test</h1>
