@@ -5,7 +5,7 @@
  * @author  Luke Watts <luke@luke-watts.com>
  * @author  Affinity4 <info@affinity4.ie>
  * @link    http://affinity4.ie/
- * @version 3.0
+ * @version 3.1
  */
 
 /**
@@ -51,12 +51,15 @@ $helper = new Helper();
 $meta = new Meta( $url );
 $plugin = new Plugin();
 
-/*
-// TODO: Find better way of including the mail scripts...or just have them loaded sitewide as a boolean setting.
-// Requires Composer so would need checks to happen.
-if ( $url->is_page( 'contact' ) ) {
 
-  require_once( 'config/mail.php' );
+/**
+ * Mail functionality
+ *
+ * @since 3.1
+ */
+require_once( 'config/mail.php' );
+
+if ( $mail_settings['mailer_on'] ) {
 
   switch ( $mail_settings['mailer'] ) {
     case 'PHPMailer':
@@ -69,8 +72,8 @@ if ( $url->is_page( 'contact' ) ) {
       return false;
       break;
   }
-
 }
-*/
+
+
 // Include Custom Plugins
 include_once( 'plugins/init.php' );

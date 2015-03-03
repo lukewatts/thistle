@@ -5,8 +5,9 @@
  * @since 2.2.0
  */
 define( 'LIBS_DIR', $path['app'] . '/libs/' );
+define( 'VENDOR_DIR', $path['base'] . '/vendor/' );
 
-function autoload( $class_name ) {
+function libs_autoload( $class_name ) {
 
   $file = LIBS_DIR . $class_name . '.php';
 
@@ -14,5 +15,11 @@ function autoload( $class_name ) {
     require_once( $file );
   }
 }
+spl_autoload_register( 'libs_autoload' );
 
-spl_autoload_register( 'autoload' );
+/**
+ * PHPMAILER Can be globally required based on mail_on setting
+ *
+ * @since 3.1.0
+ */
+require_once( VENDOR_DIR . '/phpmailer/phpmailer/PHPMailerAutoload.php' );

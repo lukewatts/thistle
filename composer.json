@@ -1,0 +1,25 @@
+{
+    "name": "lukewatts/thistle",
+    "description": "Thistle is a small, modular framework for quickly turning a normal \"static\" html site into a \"hybrid\" CMS.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Luke Watts",
+            "email": "luke@luke-watts.com"
+        },
+        {
+            "name": "Affinity4",
+            "email": "info@affinity4.ie"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "phpmailer/phpmailer": "dev-master",
+        "php-activerecord/php-activerecord": "dev-master"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "3.7.*",
+        "squizlabs/php_codesniffer": "*",
+        "wimg/php-compatibility": "dev-master"
+    }
+}
