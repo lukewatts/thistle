@@ -22,4 +22,6 @@ spl_autoload_register( 'libs_autoload' );
  *
  * @since 3.1.0
  */
-require_once( VENDOR_DIR . '/phpmailer/phpmailer/PHPMailerAutoload.php' );
+if ( $mail_settings['mailer_on'] ) {
+  require_once(VENDOR_DIR . '/phpmailer/phpmailer/PHPMailerAutoload.php');
+}

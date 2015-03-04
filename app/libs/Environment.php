@@ -29,6 +29,7 @@ class Environment {
         'DOCUMENT_ROOT' => $_SERVER['DOCUMENT_ROOT']
     );
 
+    // Set Environment dynamically if not already set
     if ( empty( $env ) ) {
       if ($_SERVER['SERVER_ADDR'] === $_SERVER['REMOTE_ADDR']) {
         $this->environment['ENV'] = 'development';

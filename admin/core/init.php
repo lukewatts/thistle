@@ -1,5 +1,7 @@
 <?php
-
-// TODO: Create SPL_Autoloader
-require_once( $path['admin'] . '/core/App.php' );
-require_once( $path['admin'] . '/core/Controller.php' );
+/**
+ * Autoload Core Clases
+ *
+ * @since 3.1
+ */
+require_once( $path['admin'] . '/autoload.php');

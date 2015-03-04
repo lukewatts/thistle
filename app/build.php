@@ -22,9 +22,12 @@ require_once( 'urls.php' );
 // Set configuration values
 require_once( 'config/config.php' );
 
+// Set mail configuration values
+require_once( 'config/mail.php' );
+
 // TODO: Clean up the rest of this file. Perhaps create an Application class to wrap this
 // Set $site['url'] and allow override
-$site['url'] = ( $site['url'] == '' ) ? get_base_url(true) : $site['url'];
+$site['url'] = ( $site['url'] == '' ) ? get_base_url(true) : $site['url']; // TODO: Check if site is in a subdirectory also
 
 // If debug mode is true turn on errors and warnings
 if ( $debug_mode == true ) ini_set('display_errors', 1);
@@ -37,7 +40,7 @@ if ( PHP_VERSION < '5.3.2' || $development_mode == true ) {
   /**
    * @since 2.2.0
    */
-  require_once( 'autoload.php' );
+  require_once( $path['app'] . '/autoload.php' );
 
 }
 else {
@@ -51,14 +54,12 @@ $helper = new Helper();
 $meta = new Meta( $url );
 $plugin = new Plugin();
 
-
+// TODO: Make a Mail class which takes in $mail_settings and then does the following from it's constructor
 /**
  * Mail functionality
  *
  * @since 3.1
  */
-require_once( 'config/mail.php' );
-
 if ( $mail_settings['mailer_on'] ) {
 
   switch ( $mail_settings['mailer'] ) {
@@ -73,7 +74,6 @@ if ( $mail_settings['mailer_on'] ) {
       break;
   }
 }
-
 
 // Include Custom Plugins
 include_once( 'plugins/init.php' );

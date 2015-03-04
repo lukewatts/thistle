@@ -2,6 +2,6 @@
 
 class Controller {
     public function __construct() {
-      echo 'Controller';
+      echo __CLASS__ . '<br />';
     }
 }
