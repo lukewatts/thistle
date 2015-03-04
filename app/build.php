@@ -22,6 +22,9 @@ require_once( 'urls.php' );
 // Set configuration values
 require_once( 'config/config.php' );
 
+// Set database configuration values
+require_once( 'config/database.php' );
+
 // Set mail configuration values
 require_once( 'config/mail.php' );
 

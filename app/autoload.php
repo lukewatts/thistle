@@ -17,6 +17,7 @@ function libs_autoload( $class_name ) {
 }
 spl_autoload_register( 'libs_autoload' );
 
+
 /**
  * PHPMAILER Can be globally required based on mail_on setting
  *

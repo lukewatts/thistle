@@ -48,20 +48,20 @@ class App {
       
     }
 
-    // If our $url hass values...
-    if ( array_values( $url ) ) {
+    // If our $url has values...
+    if ( isset($url) && array_values( $url ) ) {
 
       // Set $url with those an array of those values...
       $url = array_values($url);
-
-      // Then set params property with that array...
-      $this->params = $url;
 
     }
     else {
       // Otherwise set $url as an empty array
       $url = array();
     }
+
+    // Then set params property with that array...
+    $this->params = $url;
 
     // Finally, call our controller->method( $params ) with call_user_func_array()
     call_user_func_array( array( $this->controller, $this->method ), $this->params );

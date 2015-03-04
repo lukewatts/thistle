@@ -1,15 +1,13 @@
 <?php
 
 class Dashboard extends Controller {
-  
-  public function __construct() {
 
-  }
-
-  public function index( $data = '' ) {
+  public function index( $name = '' ) {
     
-    echo '<h1>Welcome to the Thistle Admin Dashboard</h1>';
-    print_r($data);
+    $user = $this->model('User');
+    $user->name = $name;
+    
+    $this->view( 'dashboard/index', array( 'name' => $user->name ), true );
 
   }
 
