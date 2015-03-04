@@ -1,6 +1,6 @@
 <?php
 /**
- * Autoload Core Clases
+ * Autoload Core Classes
  *
  * @since 3.1
  */

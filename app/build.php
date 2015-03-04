@@ -38,17 +38,12 @@ if ( $debug_mode == true ) ini_set('display_errors', 1);
 /**
  * @since 1.2.0
  */
-if ( PHP_VERSION < '5.3.2' || $development_mode == true ) {
-  
-  /**
-   * @since 2.2.0
-   */
-  require_once( $path['app'] . '/autoload.php' );
+/**
+ * @since 2.2.0
+ */
+require_once( $path['app'] . '/autoload.php' );
 
-}
-else {
-  if ( file_exists( $path['base'] . '/vendor' . '/autoload.php' ) ) require_once( $path['base'] . '/vendor' . '/autoload.php' );
-}
+if ( file_exists( $path['base'] . '/vendor' . '/autoload.php' ) ) require_once( $path['base'] . '/vendor' . '/autoload.php' );
 
 $env = new Environment( $environment );
 $url = new HTTP();
@@ -56,6 +51,30 @@ $html = new HTML();
 $helper = new Helper();
 $meta = new Meta( $url );
 $plugin = new Plugin();
+
+/**
+ * Eloquent ORM
+ *
+ * @since 3.2.0
+ */
+use Illuminate\Database\Capsule\Manager as Capsule;
+
+$capsule = new Capsule();
+
+$capsule->addConnection(array(
+    'driver'    => 'mysql',
+    'host'      => $db['host'],
+    'database'  => $db['name'],
+    'username'  => $db['user'],
+    'password'  => $db['pass'],
+    'charset'   => 'utf8',
+    'collation' => 'utf8_unicode_ci',
+    'prefix'    => ''
+));
+
+$capsule->setAsGlobal();
+
+$capsule->bootEloquent();
 
 // TODO: Make a Mail class which takes in $mail_settings and then does the following from it's constructor
 /**
@@ -80,3 +99,6 @@ if ( $mail_settings['mailer_on'] ) {
 
 // Include Custom Plugins
 include_once( 'plugins/init.php' );
+
+// Bootstrap Admin
+require_once( $path['admin'] . '/core/init.php' );
