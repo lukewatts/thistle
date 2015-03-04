@@ -2,7 +2,7 @@
 - **Description:** Thistle is a small, modular framework for quickly turning a normal "static" html site into a "hybrid" CMS.
 - **Authors:** Luke Watts (Affinity4.ie)
 - **Author Website:** http://affinity4.ie
-- **Version:** 3.0.0
+- **Version:** 3.1.0
 - **License:** MIT
 
 Thistle is a small, modular framework for quickly turning a normal static html site into a "hybrid" CMS.
@@ -12,7 +12,7 @@ An MVC backend will allow for handling database and content while the front end 
 Compatitbility
 --------------
 - PHP 5.2+ compatible
-- Composer compatible
+- Composer compatible (with fallbacks for < PHP 5.3)
 - PHPMailer compatible
 
 Known Issues
