@@ -17,9 +17,5 @@
         "phpmailer/phpmailer": "dev-master",
         "php-activerecord/php-activerecord": "dev-master"
     },
-    "require-dev": {
-        "phpunit/phpunit": "3.7.*",
-        "squizlabs/php_codesniffer": "*",
-        "wimg/php-compatibility": "dev-master"
-    }
+    "require-dev": {}
 }
