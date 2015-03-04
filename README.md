@@ -11,8 +11,8 @@ An MVC backend will allow for handling database and content while the front end 
 
 Compatitbility
 --------------
-- PHP 5.2+ compatible
-- Composer compatible (with fallbacks for < PHP 5.3)
+- PHP 5.3+ compatible
+- Composer compatible (with fallback if you choose not to use Composer)
 - PHPMailer compatible
 
 Known Issues
