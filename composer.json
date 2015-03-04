@@ -16,7 +16,6 @@
     "require": {
         "phpmailer/phpmailer": "dev-master",
         "illuminate/database": "4.2.*",
-        "php-activerecord/php-activerecord": "dev-master"
     },
     "require-dev": {}
 }
