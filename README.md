@@ -9,11 +9,12 @@ Thistle is a small, modular framework for quickly turning a normal static html s
 
 An MVC backend will allow for handling database and content while the front end can remain non-MVC. The front end can use as much or as little of the classes provided as long as it use the base template functions for inserting plugins and content from the database.
 
-Compatitbility
---------------
+Compatitbility & Features
+-------------------------
 - PHP 5.3+ compatible
-- Composer compatible (with fallback if you choose not to use Composer)
-- PHPMailer compatible
+- Composer
+- PHPMailer
+- Eloquent ORM
 
 Known Issues
 ------------
@@ -24,5 +25,4 @@ Future Features
 - SwiftMailer compatibility
 - Slider plugin
 - Masonry Portfolio plugin
-- Admin "layer" is still under development
 - "Thorns" API (more to come)
