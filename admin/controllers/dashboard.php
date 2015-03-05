@@ -11,4 +11,3 @@ class Dashboard extends Controller {
   }
 
 }
-
