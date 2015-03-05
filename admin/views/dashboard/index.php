@@ -1,1 +1,1 @@
-<h1> Welcome <?php echo $name; ?> to the Thistle Admin Dashboard</h1>
+<h1> Welcome <?php echo '<pre>', var_dump( $user ), '</pre>'; ?> to the Thistle Admin Dashboard</h1>
