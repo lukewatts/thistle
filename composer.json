@@ -14,8 +14,7 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "phpmailer/phpmailer": "dev-master",
-        "illuminate/database": "4.2.*",
-    },
-    "require-dev": {}
+        "phpmailer/phpmailer": "5.2.*",
+        "illuminate/database": "4.2.*"
+    }
 }
