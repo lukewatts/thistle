@@ -6,6 +6,7 @@ class Config {
     if ( $path ) {
 
       $config = $GLOBALS['config'];
+      
       $key = explode( '.', $path );
 
       foreach( $key as $val ) {

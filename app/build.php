@@ -22,6 +22,8 @@ require_once( 'urls.php' );
 // Set configuration values
 require_once( 'config/config.php' );
 
+require_once( 'config/sessions.php' );
+
 // Set database configuration values
 require_once( 'config/database.php' );
 
