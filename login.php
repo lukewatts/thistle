@@ -1,6 +1,6 @@
 <?php require_once( 'templates/header.php' ); ?>
 
-<?php
+<?php // TODO: To clean this up either place in a Plugin or move logging in to a controller...
   if ( Input::exists() ) {
     if ( Input::get( 'log_out' ) ) {
       User::logout();
@@ -19,8 +19,8 @@
 
       $login_validation->rules = array(
         'email' => array(
-          'required' => true,
-          'email' => true,
+          'required'  => true,
+          'email'     => true,
           'maxlength' => 64
         )
       );
