@@ -76,8 +76,8 @@ $capsule->addConnection(array(
 $capsule->setAsGlobal();
 $capsule->bootEloquent();
 
-// Include Custom Plugins
-include_once( 'plugins/init.php' );
-
 // Bootstrap Admin
 require_once( $path['admin'] . '/core/init.php' );
+
+// Require Custom Plugins
+require_once( $path['app'] . '/plugins/init.php' );
