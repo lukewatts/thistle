@@ -1,34 +1,36 @@
 <?php
 
 /**
- * Checks and deals with GET and POST variables
+ * Determines if a form has received input
+ *
+ * @package Thistle
  *
  * @since 3.3.0
  */
 class Input {
 
   /**
-   * Check if the POST or GET exists
-   * 
-   * @param  string $type The type: 'get' or 'post'. Default: 'post'
-   * @return boolean
+   * Check if get or post data exists
+   *
+   * @package Thistle
+   *
+   * @since 3.3.0
    */
   public static function exists( $type = 'post' ) {
 
-    switch( $type ) {
+    switch ($type) {
       case 'post' :
-        $output = ( !empty( $_POST ) ) ? true : false;
-      break;
-      case 'get' :
-        $output = ( !empty( $_GET ) ) ? true : false;
-      break;
+        $check_if_empty = (!empty($_POST)) ? true : false;
+        return $check_if_empty;
+        break;
+      case 'get':
+        $check_if_empty = (!empty($_GET)) ? true : false;
+        return $check_if_empty;
+        break;
       default :
-        $output = false;
-      break;
+        return false;
+        break;
     }
-
-    return $output;
-
   }
 
   /**
@@ -49,6 +51,5 @@ class Input {
     return '';
 
   }
-
 
 }

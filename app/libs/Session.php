@@ -1,10 +1,10 @@
 <?php
+
 /**
  * Class for setting, getting, checking and deleting sessions
  *
  * @package Thistle
  * @since  3.3.0
- * 
  */
 class Session {
 
@@ -22,13 +22,17 @@ class Session {
   }
 
   /**
-   * Get session by name
-   * 
-   * @param  string $name
-   * @return string
+   * Return the given session value or the session array
+   * @return mixed
+   * @since 3.3.0
    */
-  public function get( $name ) {
-    return $_SESSION[$name];
+  public static function get( $name = '' ) {
+    if( !empty( $name ) ) {
+      return $_SESSION[$name];
+    }
+    else {
+      return $_SESSION;
+    }
   }
 
   /**

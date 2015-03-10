@@ -7,7 +7,6 @@
     }
   }
 ?>
-
 <?php if ( Session::exists( 'log_in') ) : ?>
   <h3><?php echo Session::flash( 'log_in' ); ?></h3>
 <?php endif; ?>
