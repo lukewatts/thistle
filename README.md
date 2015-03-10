@@ -2,7 +2,7 @@
 - **Description:** Thistle is a small, modular framework for quickly turning a normal "static" html site into a "hybrid" CMS.
 - **Authors:** Luke Watts (Affinity4.ie)
 - **Author Website:** http://affinity4.ie
-- **Version:** 3.2.0
+- **Version:** 3.3.1
 - **License:** MIT
 
 Thistle is a small, modular framework for quickly turning a normal static html site into a "hybrid" CMS.
@@ -22,6 +22,7 @@ If your root folder is in a subdirectory of your server you will need to set the
 
 Future Features
 ---------------
+- Twig PHP Templating Engine
 - SwiftMailer compatibility
 - Slider plugin
 - Masonry Portfolio plugin
