@@ -3,6 +3,7 @@
 /**
  * Used to create missing __DIR__ constant for php < 5.3.2
  *
+ * @deprecated 3.1.0
  * @since 1.2.0
  */
 if ( !defined('__DIR__') ) define( '__DIR__', dirname( __FILE__ ) );

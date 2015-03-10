@@ -35,15 +35,15 @@ class Session {
     }
   }
 
-  /**
-   * Check if a session exists by name
-   * 
-   * @param  string $name
-   * @return boolean
-   */
-  public static function exists( $name ) {
-    return ( isset( $_SESSION[$name] ) ) ? true : false;
-  }
+    /**
+     * Check if a session exists by name
+     * 
+     * @param  string $name
+     * @return boolean
+     */
+    public static function exists($name) {
+        return (isset($_SESSION[$name])) ? true : false;
+    }
 
   /**
    * Delete a session by name
