@@ -30,36 +30,36 @@ class HTML
     }
 
 
-/**
- * Outputs a link to a CSS file.
- *
- * @param  string $href The path to the css file
- * @param  array  $atts The HTML attributes and properties to be added
- * @return string
- * @since 1.0.0
- */
-public function css($href, $atts = array())
-{
-    echo $this->get_css($href, $atts);
-}
+    /**
+     * Outputs a link to a CSS file.
+     *
+     * @param  string $href The path to the css file
+     * @param  array  $atts The HTML attributes and properties to be added
+     * @return string
+     * @since 1.0.0
+     */
+    public function css($href, $atts = array())
+    {
+        echo $this->get_css($href, $atts);
+    }
 
 
-/**
- * Generate a link to a JavaScript file.
- *
- * @param string $src  The path to the js file
- * @param array  $atts The HTML attributes and properties to be added 
- * @return string
- * @since  1.0.0
- */
-public function get_js($src, $atts = array())
-{
-    global $site;
+    /**
+     * Generate a link to a JavaScript file.
+     *
+     * @param string $src  The path to the js file
+     * @param array  $atts The HTML attributes and properties to be added 
+     * @return string
+     * @since  1.0.0
+     */
+    public function get_js($src, $atts = array())
+    {
+        global $site;
 
-    $atts['src'] = $site['url'] . $site['assets'] . '/' . $src;
+        $atts['src'] = $site['url'] . $site['assets'] . '/' . $src;
 
-    return '<script'.$this->attributes($atts).'></script>'.PHP_EOL;
-}
+        return '<script'.$this->attributes($atts).'></script>'.PHP_EOL;
+    }
 
     /**
      * Outputs a link to a JS file.
