@@ -9,12 +9,12 @@ session_start();
  */
 
 $GLOBALS['config'] = array(
-  'cookie' => array(
-    'name' => 'hash',
-    'expiry' => 604800
-  ),
-  'session' => array(
-    'name' => 'user',
-    'token' => 'token'
-  )
+    'cookie' => array(
+        'name' => 'hash',
+        'expiry' => 604800
+    ),
+    'session' => array(
+        'name' => 'user',
+        'token' => 'token'
+    )
 );

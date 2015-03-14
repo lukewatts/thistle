@@ -12,8 +12,9 @@
  *
  * @since 1.1.0
  */
-function is_https() {
-  return ( !empty( $_SERVER['HTTPS'] ) ) ? true : false;
+function is_https()
+{
+    return (!empty($_SERVER['HTTPS'])) ? true : false;
 }
 
 
@@ -24,44 +25,48 @@ function is_https() {
  *
  * @since 1.1.0
  */
-function get_https() {
-  return ( is_https() ) ? 'https://' : 'http://';
+function get_https()
+{
+    return (is_https()) ? 'https://' : 'http://';
 }
 
 
 /**
- * Outputs the current protocol ( 'http://' or 'https://' )
+ * Outputs the current protocol ('http://' or 'https://')
  *
  * @return void
  *
  * @since 1.1.0
  */
-function https() {
-  echo get_https();
+function https()
+{
+    echo get_https();
 }
 
 
 /**
- * Returns the server name ( 'example.com' )
+ * Returns the server name ('example.com')
  *
  * @return string
  *
  * @since 1.1.0
  */
-function get_server_name() {
-  return $_SERVER['SERVER_NAME'];
+function get_server_name()
+{
+    return $_SERVER['SERVER_NAME'];
 }
 
 
 /**
- * Outputs the server name ( 'example.com' )
+ * Outputs the server name ('example.com')
  *
  * @return void
  *
  * @since 1.1.0
  */
-function server_name() {
-  echo get_server_name();
+function server_name()
+{
+    echo get_server_name();
 }
 
 
@@ -73,8 +78,9 @@ function server_name() {
  *
  * @since 1.1.0
  */
-function get_base_url( $append_slash = false ) {
-  return ( $append_slash == '/' || $append_slash == true ) ? get_https() . get_server_name() . '/' : get_https() . get_server_name();
+function get_base_url($append_slash = false)
+{
+    return ($append_slash == '/' || $append_slash == true) ? get_https() . get_server_name() . '/' : get_https() . get_server_name();
 }
 
 
@@ -86,8 +92,9 @@ function get_base_url( $append_slash = false ) {
  *
  * @since 1.1.0
  */
-function base_url( $append_slash = false ) {
-  echo get_base_url( $append_slash );
+function base_url($append_slash = false)
+{
+    echo get_base_url($append_slash);
 }
 
 
@@ -99,8 +106,9 @@ function base_url( $append_slash = false ) {
  *
  * @since 1.1.0
  */
-function get_assets_url( $append_slash = false ) {
-  return ( $append_slash == '/' || $append_slash == true ) ? get_base_url( true ) . 'assets/' : get_base_url( true ) . 'assets';
+function get_assets_url($append_slash = false)
+{
+    return ($append_slash == '/' || $append_slash == true) ? get_base_url(true) . 'assets/' : get_base_url(true) . 'assets';
 }
 
 
@@ -112,6 +120,7 @@ function get_assets_url( $append_slash = false ) {
  *
  * @since 1.1.0
  */
-function assets_url( $append_slash = false ) {
-  echo get_assets_url( $append_slash );
+function assets_url($append_slash = false)
+{
+    echo get_assets_url($append_slash);
 }
