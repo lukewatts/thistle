@@ -3,7 +3,7 @@
 class App
 {
     protected $controller = 'dashboard';
-    protected $method = 'index';s
+    protected $method = 'index';
     protected $params = array();
 
     public function __construct()
