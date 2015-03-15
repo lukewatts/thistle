@@ -1,84 +1,71 @@
 <?php
 
-class App {
+class App
+{
+    protected $controller = 'dashboard';
+    protected $method = 'index';
+    protected $params = array();
 
-  protected $controller = 'dashboard';
+    public function __construct()
+    {  
+        global $path;
 
-  protected $method = 'index';
+        // Parse and sanitize url...
+        $url = $this->parseUrl();
 
-  protected $params = array();
+        // If a controller exists from first value in $url array...
+        if (file_exists($path['admin'] . '/controllers/' . $url[0] . '.php')) {
+            // Set controller property to that value...
+            $this->controller = $url[0];
 
-  public function __construct() {
-    
-    global $path;
+            // Then unset the value from the $url array...
+            unset($url[0]);
+        }
+        
+        // Require in our controller...
+        require_once($path['admin'] . '/controllers/' . $this->controller . '.php');
 
-    // Parse and sanitize url...
-    $url = $this->parseUrl();
+        // Create new Object from our controller so we can find it's methods...
+        $this->controller = new $this->controller;
 
-    // If a controller exists from first value in $url array...
-    if ( file_exists( $path['admin'] . '/controllers/' . $url[0] . '.php' ) ) {
+        // If a method has been passed through the url...
+        if (isset($url[1])) {
+            // And such a method also exists in our controller file...
+            if (method_exists($this->controller, $url[1])) {
 
-      // Set controller property to that value...
-      $this->controller = $url[0];
+                // Set our method property to that value...
+                $this->method = $url[1];
 
-      // Then unset the value from the $url array...
-      unset( $url[0] );
+                // Unset the value from the $url value so we can deal with our params as a seperate array...
+                unset($url[1]);
+            }
+        }
 
-    }
-    
-    // Require in our controller...
-    require_once( $path['admin'] . '/controllers/' . $this->controller . '.php' );
+        // If our $url has values...
+        if (isset($url) && array_values($url)) {
+            // Set $url with those an array of those values...
+            $url = array_values($url);
+        } else {
+            // Otherwise set $url as an empty array
+            $url = array();
+        }
 
-    // Create new Object from our controller so we can find it's methods...
-    $this->controller = new $this->controller;
+        // Then set params property with that array...
+        $this->params = $url;
 
-    // If a method has been passed through the url...
-    if ( isset( $url[1] ) ) {
-
-      // And such a method also exists in our controller file...
-      if ( method_exists( $this->controller, $url[1] ) ) {
-
-        // Set our method property to that value...
-        $this->method = $url[1];
-
-        // Unset the value from the $url value so we can deal with our params as a seperate array...
-        unset($url[1]);
-
-      }
-      
-    }
-
-    // If our $url has values...
-    if ( isset($url) && array_values( $url ) ) {
-
-      // Set $url with those an array of those values...
-      $url = array_values($url);
-
-    }
-    else {
-      // Otherwise set $url as an empty array
-      $url = array();
+        // Finally, call our controller->method($params) with call_user_func_array()
+        call_user_func_array(array($this->controller, $this->method), $this->params);
     }
 
-    // Then set params property with that array...
-    $this->params = $url;
+    public function parseUrl()
+    {
+        if (isset($_GET['url'])) {
+            $url = $_GET['url'];
+            $url = rtrim($url, '/');
+            $url = filter_var($url, FILTER_SANITIZE_URL);
+            $url = explode('/', $url);
 
-    // Finally, call our controller->method( $params ) with call_user_func_array()
-    call_user_func_array( array( $this->controller, $this->method ), $this->params );
-    
-  }
-
-  public function parseUrl() {
-
-    if ( isset( $_GET['url'] ) ) {
-      $url = $_GET['url'];
-      $url = rtrim( $url, '/' );
-      $url = filter_var($url, FILTER_SANITIZE_URL );
-      $url = explode( '/', $url );
-
-      return $url;
+            return $url;
+        }
     }
-
-  }
-
 }
