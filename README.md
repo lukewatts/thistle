@@ -2,8 +2,10 @@
 - **Description:** Thistle is a small, modular framework for quickly turning a normal "static" html site into a "hybrid" CMS.
 - **Authors:** Luke Watts (Affinity4.ie)
 - **Author Website:** http://affinity4.ie
-- **Version:** 3.3.1
+- **Version:** 0.3.3
 - **License:** MIT
+
+__IMPORTANT: This branch is deprecated as 2015-03-15 in favour of Thistle MVC__
 
 Thistle is a small, modular framework for quickly turning a normal static html site into a "hybrid" CMS.
 
