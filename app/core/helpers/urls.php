@@ -2,15 +2,13 @@
 /**
  * URL helpers for dynamic URL generation
  *
- * @since 1.1.0
+ * @deprecated 0.3.3 In favor of Symfony\HttpFoundation\Request
  */
 
 /**
  * Checks if the current server is running SSL (https://) Returns true if https://, false if http://
  *
  * @return boolean
- *
- * @since 1.1.0
  */
 function is_https()
 {
@@ -22,8 +20,6 @@ function is_https()
  * Returns the current protocol
  *
  * @return string
- *
- * @since 1.1.0
  */
 function get_https()
 {
@@ -33,10 +29,6 @@ function get_https()
 
 /**
  * Outputs the current protocol ('http://' or 'https://')
- *
- * @return void
- *
- * @since 1.1.0
  */
 function https()
 {
@@ -48,8 +40,6 @@ function https()
  * Returns the server name ('example.com')
  *
  * @return string
- *
- * @since 1.1.0
  */
 function get_server_name()
 {
@@ -59,10 +49,6 @@ function get_server_name()
 
 /**
  * Outputs the server name ('example.com')
- *
- * @return void
- *
- * @since 1.1.0
  */
 function server_name()
 {
@@ -75,8 +61,6 @@ function server_name()
  *
  * @param  boolean|string $append_slash Whether or not to append a slash to the end of the url
  * @return string
- *
- * @since 1.1.0
  */
 function get_base_url($append_slash = false)
 {
@@ -88,9 +72,6 @@ function get_base_url($append_slash = false)
  * Outputs the full absolute base url ('http://example.com') with or without trailing slash ('/')
  *
  * @param  boolean|string $append_slash Whether or not to append a slash to the end of the url
- * @return string
- *
- * @since 1.1.0
  */
 function base_url($append_slash = false)
 {
@@ -103,8 +84,6 @@ function base_url($append_slash = false)
  *
  * @param  boolean|string $append_slash Whether or not to append a slash to the end of the url
  * @return string
- *
- * @since 1.1.0
  */
 function get_assets_url($append_slash = false)
 {
@@ -116,9 +95,6 @@ function get_assets_url($append_slash = false)
  * Outputs the full absolute assets url ('http://example.com/assets') with or without trailing slash ('/')
  *
  * @param  boolean|string $append_slash Whether or not to append a slash to the end of the url
- * @return string
- *
- * @since 1.1.0
  */
 function assets_url($append_slash = false)
 {

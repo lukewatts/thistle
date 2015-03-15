@@ -1,15 +1,11 @@
 - **Name:** Thistle
-- **Description:** Thistle is a small, modular framework for quickly turning a normal "static" html site into a "hybrid" CMS.
+- **Description:** Thistle is a small, modular MVC framework for rapid RESTful website development.
 - **Authors:** Luke Watts (Affinity4.ie)
 - **Author Website:** http://affinity4.ie
 - **Version:** 0.3.3
 - **License:** MIT
 
-__IMPORTANT: This branch is deprecated as 2015-03-15 in favour of Thistle MVC__
-
-Thistle is a small, modular framework for quickly turning a normal static html site into a "hybrid" CMS.
-
-An MVC backend will allow for handling database and content while the front end can remain non-MVC. The front end can use as much or as little of the classes provided as long as it use the base template functions for inserting plugins and content from the database.
+Thistle is a small, modular MVC framework for rapid RESTful website development.
 
 Compatitbility & Features
 -------------------------
@@ -28,4 +24,4 @@ Future Features
 - SwiftMailer compatibility
 - Slider plugin
 - Masonry Portfolio plugin
-- "Thorns" API (more to come)
+- "Thorns" API (under-development)

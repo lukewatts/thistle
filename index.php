@@ -1,5 +1,15 @@
-<?php require_once( 'templates/header.php' ); ?>
+<?php
+/**
+ * Thistle MVC
+ *
+ * @author  Luke Watts <luke@luke-watts.com>
+ * @author  Affinity4 <info@affinity4.ie>
+ * @link    http://affinity4.ie/
+ * @version 0.3.3
+ */
 
-	<h1>Welcome to <?php echo $site['title'] ?>! </h1>
+define('BASEDIR', rtrim(str_replace('\\', '/', dirname(__FILE__))), '/');
 
-<?php  require_once( 'templates/footer.php' ); ?>
+require_once(BASEDIR . '/app/core/init.php');
+
+// new App;

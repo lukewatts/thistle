@@ -1,7 +1,6 @@
 .idea
+.env
 .sass-cache
-assets/.sass-cache
+public/assets/.sass-cache
 vendor
 composer.lock
-admin/views/create
-admin/controllers/create.php

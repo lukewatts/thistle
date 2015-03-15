@@ -1,6 +1,6 @@
 {
     "name": "lukewatts/thistle",
-    "description": "Thistle is a small, modular framework for quickly turning a normal \"static\" html site into a \"hybrid\" CMS.",
+    "description": "Thistle is a small, modular MVC framework.",
     "license": "MIT",
     "authors": [
         {
@@ -13,8 +13,16 @@
         }
     ],
     "minimum-stability": "stable",
+    "require-dev": {
+        "phpunit/phpunit": "4.5.*"
+    },
     "require": {
+        "illuminate/database": "5.0.*",
+        "symfony/event-dispatcher": "2.6.4",
+        "symfony/http-foundation": "2.6.4",
+        "symfony/filesystem": "2.6.4",
+        "symfony/finder": "2.6.4",
         "phpmailer/phpmailer": "5.2.*",
-        "illuminate/database": "4.2.*"
+        "vlucas/phpdotenv": "1.1.*"
     }
 }
