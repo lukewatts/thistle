@@ -10,11 +10,7 @@ class Session
 {
     /**
      * Set a session by name => value and return it
-<<<<<<< HEAD
      *
-=======
-     * 
->>>>>>> c61c17b09b3351c9981ebdf4c55fd88893f9392b
      * @param  string $name
      * @param  string $value
      * @return string
@@ -33,16 +29,9 @@ class Session
      */
     public static function get($name = '')
     {
-<<<<<<< HEAD
         if (!empty($name)) {
             return $_SESSION[$name];
         } else {
-=======
-        if(!empty($name)) {
-            return $_SESSION[$name];
-        }
-        else {
->>>>>>> c61c17b09b3351c9981ebdf4c55fd88893f9392b
             return $_SESSION;
         }
     }
@@ -60,32 +49,20 @@ class Session
 
     /**
      * Delete a session by name
-<<<<<<< HEAD
      *
-=======
-     * 
->>>>>>> c61c17b09b3351c9981ebdf4c55fd88893f9392b
      * @param  string $name
      * @return void
      */
     public static function delete($name)
     {
-<<<<<<< HEAD
         if (self::exists($name)) {
-=======
-        if ( self::exists($name)) {
->>>>>>> c61c17b09b3351c9981ebdf4c55fd88893f9392b
             unset($_SESSION[$name]);
         }
     }
 
     /**
      * Flash a message to the user after a session is created
-<<<<<<< HEAD
      *
-=======
-     * 
->>>>>>> c61c17b09b3351c9981ebdf4c55fd88893f9392b
      * @param  string $name
      * @param  string $message
      * @return mixed
@@ -96,12 +73,7 @@ class Session
             $session = self::get($name);
             self::delete($name);
             return $session;
-<<<<<<< HEAD
         } else {
-=======
-        }
-        else {
->>>>>>> c61c17b09b3351c9981ebdf4c55fd88893f9392b
             self::set($name, $message);
         }
     }
