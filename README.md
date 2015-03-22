@@ -5,6 +5,8 @@
 - **Version:** 0.3.3
 - **License:** MIT
 
+**IMPORTANT:** Currently undergoing a complete rewrite, and as such is not usable. Rewritten version will have "Dependency Injection/Service Locator/Inversion of Control" Container, Http Handlers, routing and middleware 
+
 Thistle is a small, modular MVC framework for rapid RESTful website development.
 
 Compatitbility & Features
@@ -24,4 +26,4 @@ Future Features
 - SwiftMailer compatibility
 - Slider plugin
 - Masonry Portfolio plugin
-- "Thorns" API (under-development)
+- "Thorns" API (where the rapid REST will come from...)
