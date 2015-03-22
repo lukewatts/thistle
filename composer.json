@@ -23,6 +23,7 @@
         "symfony/filesystem": "2.6.4",
         "symfony/finder": "2.6.4",
         "phpmailer/phpmailer": "5.2.*",
-        "vlucas/phpdotenv": "1.1.*"
+        "vlucas/phpdotenv": "1.1.*",
+        "autarky/container": "1.0.*"
     }
 }
