@@ -16,10 +16,6 @@ Compatitbility & Features
 - PHPMailer
 - Eloquent ORM
 
-Known Issues
-------------
-If your root folder is in a subdirectory of your server you will need to set the $site['url'] field in app/config/config.php for Thistle to work.
-
 Future Features
 ---------------
 - Twig PHP Templating Engine

@@ -1,14 +1,11 @@
 <?php
-session_start();
-
-/**
- * Session configuration settings
- *
- * @package Thistle
- * @since 3.3.0
- */
-
-$GLOBALS['config'] = array(
+return [
+    /*
+     | --------------------------------------------------
+     | Session configuration settings
+     | --------------------------------------------------
+     | Cookie and session settings.
+     */
     'cookie' => array(
         'name' => 'hash',
         'expiry' => 604800
@@ -17,4 +14,4 @@ $GLOBALS['config'] = array(
         'name' => 'user',
         'token' => 'token'
     )
-);
+];
