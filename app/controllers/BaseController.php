@@ -13,5 +13,5 @@ use Silex\Application;
  */
 class BaseController
 {
-    
+    //
 }
