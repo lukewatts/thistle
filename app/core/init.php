@@ -1,71 +1,149 @@
-<?php if (!defined('BASEDIR')) die('BASEDIR not set correctly');
+<?php
+use Symfony\Component\HttpFoundation\Request;
 
 /**
- * Check php version and die and dump and error message otherwise
+ * ------------------------------------------------------------
+ * Composer Autoload
+ * ------------------------------------------------------------
+ *
+ * All autoload should be done through composer to ensure
+ * packages are available to the rest of the application
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
  */
-if (version_compare(PHP_VERSION, '5.3.2', '<')) die('A minimum of PHP 5.3.2 is required to run Thistle.<br />You are using PHP : ' . PHP_VERSION);
+require_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
 
-// Composer Autoloaders
-require_once(BASEDIR . '/vendor/autoload.php');
+/**
+ * ------------------------------------------------------------
+ * Request
+ * ------------------------------------------------------------
+ *
+ * Request global for use outside of the $app request cycle
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+$request = Request::createFromGlobals();
 
-// Setup paths for use throughout application
-require_once(BASEDIR . '/app/core/helpers/paths.php');
+/**
+ * ------------------------------------------------------------
+ * App: Init
+ * ------------------------------------------------------------
+ *
+ * Initialize Silex. Silex is the heart of Thistle. Silex
+ * handles Dependency Injection, routing, and middleware
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+$app = new Silex\Application;
 
-// TODO: Use Symfony Classloader to load Environment and settings class
-Environment::load();
+/**
+ * ------------------------------------------------------------
+ * Configuration
+ * ------------------------------------------------------------
+ *
+ * Load our configuration array for use throughout our
+ * application
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+$config = require_once dirname(__DIR__) . '/config.php';
 
-// TODO: Find files in config directory dynamically and push/require them into an array and return the array
-$config = new Settings;
+/**
+ * ------------------------------------------------------------
+ * App: URL
+ * ------------------------------------------------------------
+ *
+ * Set the $app['url'] to the value of app/config.php 'url'.
+ * Otherwise, set it to the value of $_SERVER['SERVER_NAME]
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+$app['url'] = (isset($config['url'])) ? $config['url'] : sprintf('http://%s', $request->server->get('SERVER_NAME'));
 
-// Application configuration
-// TODO: remove in favour of above method
-$config['app'] = require_once(APPDIR . '/config/app.php');
-var_dump($config);
-// Database configuration
-$config['database'] = require_once(APPDIR . '/config/database.php');
+/**
+ * ------------------------------------------------------------
+ * App: Debug
+ * ------------------------------------------------------------
+ *
+ * Check if the debug value has been set in app/config.php.
+ * If it has use that value, otherwise set debug to false
+ *
+ * NOTE: if debug is true then Whoops will be used for the
+ * display of errors
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+$app['debug'] = (isset($config['debug']) && $config['debug'] === true) ? true : false;
 
-// Set session and cookie values
-$config['session'] = require_once(APPDIR . '/config/sessions.php');
+/**
+ * ------------------------------------------------------------
+ * Whoops Service Provider
+ * ------------------------------------------------------------
+ *
+ * If $app'debug] is true we register the Whoops Service
+ * Provider
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+if ($app['debug']) {
+    $app->register(new App\Core\Provider\Whoops\WhoopsServiceProvider());
+}
 
-// Set mail configuration values
-$config['mail'] = require_once(APPDIR . '/config/mail.php');
+/**
+ * ------------------------------------------------------------
+ * Service Providers
+ * ------------------------------------------------------------
+ *
+ * Register all of our service providers registered in the
+ * app/config.php 'providers' array
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+foreach ($config['providers'] as $provider => $options) {
+    if (!is_array($options)) $app->register(new $options());
+    else $app->register(new $provider(), $options);
+}
 
-// If debug mode is true turn on errors and warnings
-if ($config['app']['debug_mode'] == true) ini_set('display_errors', 1);
+/**
+ * ------------------------------------------------------------
+ * Functions
+ * ------------------------------------------------------------
+ *
+ * Thistle core function
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+require_once __DIR__ . '/helpers/functions.php';
 
-// $env = new Environment($environment);
-// $url = new HTTP;
-// $html = new HTML;
-// $helper = new Helper;
-// $meta = new Meta($url);
-// $plugin = new Plugin;
-// new Mailer;
+/**
+ * ------------------------------------------------------------
+ * Routes
+ * ------------------------------------------------------------
+ *
+ * Thistle routes
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+require_once dirname(__DIR__) . '/routes.php';
 
-// /**
-//  * Eloquent ORM
-//  *
-//  * @since 3.2.0
-//  */
-// use Illuminate\Database\Capsule\Manager as Capsule;
-
-// $capsule = new Capsule();
-
-// $capsule->addConnection(array(
-//     'driver'    => 'mysql',
-//     'host'      => $db['host'],
-//     'database'  => $db['name'],
-//     'username'  => $db['user'],
-//     'password'  => $db['pass'],
-//     'charset'   => 'utf8',
-//     'collation' => 'utf8_unicode_ci',
-//     'prefix'    => ''
-// ));
-
-// $capsule->setAsGlobal();
-// $capsule->bootEloquent();
-
-// // Bootstrap Admin
-// require_once($path['admin'] . '/core/init.php');
-
-// // Require Custom Plugins
-// require_once($path['app'] . '/plugins/init.php');
+/**
+ * ------------------------------------------------------------
+ * App: Run
+ * ------------------------------------------------------------
+ *
+ * Run the application
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+$app->run();

@@ -1,5 +1,2 @@
 .idea
-.env
-.sass-cache
-public/assets/.sass-cache
-vendor
+/vendor/
