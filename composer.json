@@ -1,7 +1,7 @@
 {
     "name": "affinity4/thistle",
     "description": "Thistle is an MVC framework built on Silex and with some custom service providers",
-    "license": "ISC",
+    "license": "GPLv3",
     "authors": [
         {
             "name": "Luke Watts",
@@ -24,6 +24,7 @@
         "monolog/monolog": "^1.19",
         "symfony/twig-bridge": "^3.1",
         "twig/twig": "^1.24",
+        "symfony/filesystem": "^3.1",
         "symfony/console": "^3.1",
         "symfony/form": "^3.1",
         "symfony/asset": "^3.1",

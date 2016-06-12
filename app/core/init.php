@@ -98,22 +98,6 @@ if ($app['debug']) {
 
 /**
  * ------------------------------------------------------------
- * Service Providers
- * ------------------------------------------------------------
- *
- * Register all of our service providers registered in the
- * app/config.php 'providers' array
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
- */
-foreach ($config['providers'] as $provider => $options) {
-    if (!is_array($options)) $app->register(new $options());
-    else $app->register(new $provider(), $options);
-}
-
-/**
- * ------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------
  *
@@ -123,6 +107,24 @@ foreach ($config['providers'] as $provider => $options) {
  * @since 0.0.1
  */
 require_once __DIR__ . '/helpers/functions.php';
+
+/**
+ * ------------------------------------------------------------
+ * Service Providers
+ * ------------------------------------------------------------
+ *
+ * Register all of our service providers registered in the
+ * app/providers.php array
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ */
+$providers = require_once dirname(__DIR__) . '/providers.php';
+
+foreach ($providers as $provider => $options) {
+    if (!is_array($options)) $app->register(new $options());
+    else $app->register(new $provider(), $options);
+}
 
 /**
  * ------------------------------------------------------------

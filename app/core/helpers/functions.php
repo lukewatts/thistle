@@ -22,3 +22,16 @@ function view($view, array $params = [])
 
     return $app['twig']->render(sprintf('%s.html.twig', $view), $params);
 }
+
+function model_files_array($exclude = ['.', '..', 'BaseModel.php'])
+{
+    $model_files =  array_diff(scandir(dirname(dirname(__DIR__)) . '/models'), $exclude);
+
+    $models = [];
+    foreach ($model_files as $model_file) {
+        $model = str_replace('.php', '', $model_file);
+        $models[Doctrine\Common\Inflector\Inflector::tableize($model)] = sprintf('App\Model\%s', str_replace('.php', '', $model));
+    }
+
+    return $models;
+}

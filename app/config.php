@@ -14,58 +14,13 @@
  */
 return [
     'debug' => true,
-    'url' => 'http://127.0.0.1/sites/thistle',
-    'providers' => [
-
-        /**
-         * ------------------------------------------------------------
-         * Doctrine Service Provider
-         * ------------------------------------------------------------
-         *
-         * Twig is used for all of Thistle's templates and views
-         *
-         * @author Luke Watts <luke@affinity4.ie>
-         * @since 0.0.1
-         */
-        'Silex\Provider\DoctrineServiceProvider' => [
-            'db.options' => [
-                'driver'    => 'pdo_mysql',
-                'host'      => '127.0.0.1',
-                'dbname'    => 'thistle',
-                'user'      => 'root',
-                'password'  => '',
-                'charset'   => 'utf8',
-            ]
-        ],
-
-        /**
-         * ------------------------------------------------------------
-         * Twig Service Provider
-         * ------------------------------------------------------------
-         *
-         * Twig is used for all of Thistle's templates and views
-         *
-         * @author Luke Watts <luke@affinity4.ie>
-         * @since 0.0.1
-         */
-        'Silex\Provider\TwigServiceProvider' => [
-            'twig.path' => __DIR__ . '/views'
-        ],
-
-        /**
-         * ------------------------------------------------------------
-         * Repository Service Provider
-         * ------------------------------------------------------------
-         *
-         * Twig is used for all of Thistle's templates and views
-         *
-         * @author Luke Watts <luke@affinity4.ie>
-         * @since 0.0.1
-         */
-        'App\Core\Provider\Model\ModelServiceProvider' => [
-            'models' => [
-                'user' => 'App\Model\User'
-            ]
-        ]
+    'url'   => 'http://127.0.0.1/sites/thistle',
+    'db'    => [
+        'dbname'    => 'thistle',
+        'host'      => '127.0.0.1',
+        'user'      => 'root',
+        'password'  => '',
+        'driver'    => 'pdo_mysql',
+        'charset'   => 'utf8',
     ]
 ];

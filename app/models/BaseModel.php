@@ -3,6 +3,15 @@ namespace App\Model;
 
 use App\Core\Provider\Model\Model;
 
+/**
+ * ------------------------------------------------------------
+ * Class BaseModel
+ * ------------------------------------------------------------
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @package App\Model
+ * @since 0.0.2
+ */
 class BaseModel extends Model
 {
     protected $clause;
@@ -24,6 +33,8 @@ class BaseModel extends Model
      * Inherited from App\Core\Provider\Repository abstract method.
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @return string
      */
     public function getTableName()
@@ -39,10 +50,13 @@ class BaseModel extends Model
      * Finds All rows by a set criteria
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param array $criteria
      * @param array|null $orderBy
      * @param null $limit
      * @param null $offset
+     *
      * @return array
      */
     public function findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
@@ -63,6 +77,8 @@ class BaseModel extends Model
      * Returns one row.
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param array $criteria
      * @param array|null $orderBy
      * @param null $limit
@@ -84,6 +100,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param array $query
      * @param array|null $orderBy
      * @param null $limit
@@ -104,6 +122,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @return string
      */
     public function getClause()
@@ -117,6 +137,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param array $criteria
      */
     public function setValues(array $criteria)
@@ -135,6 +157,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @return array
      */
     public function getValues()
@@ -148,6 +172,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param array $criteria
      */
     public function setQuery(array $criteria)
@@ -166,6 +192,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @return array
      */
     public function getQuery()
@@ -179,6 +207,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param string $sql
      */
     public function setSql($sql)
@@ -192,6 +222,8 @@ class BaseModel extends Model
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @return string
      */
     public function getSql()
