@@ -128,6 +128,18 @@ foreach ($providers as $provider => $options) {
 
 /**
  * ------------------------------------------------------------
+ * Twig: Extend
+ * ------------------------------------------------------------
+ *
+ * Extend Twig by adding functions, filters and globals
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.3
+ */
+require_once dirname(__DIR__) . '/twig/extend.php';
+
+/**
+ * ------------------------------------------------------------
  * Routes
  * ------------------------------------------------------------
  *

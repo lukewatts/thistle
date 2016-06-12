@@ -28,7 +28,7 @@ class Page extends BaseController
     public function home(Application $app)
     {
         return view('home', [
-            'version' => 'v0.0.1'
+            'version' => 'v0.0.3'
         ]);
     }
 }

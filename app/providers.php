@@ -40,5 +40,18 @@ return [
      */
     'App\Core\Provider\Model\ModelServiceProvider' => [
         'models' => model_files_array()
-    ]
+    ],
+
+    /**
+     * ------------------------------------------------------------
+     * URL Generator Service Provider
+     * ------------------------------------------------------------
+     *
+     * This allow for use or the url and path functions in Twig
+     * as well as other benefits outside of Twig
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.3
+     */
+    'Silex\Provider\UrlGeneratorServiceProvider',
 ];

@@ -1,10 +1,20 @@
 {% extends "base.html.twig" %}
 
-{% block title %}
-    Home{{ parent() }}
-{% endblock %}
+{% block title %}Home{{ parent() }}{% endblock %}
 
 {% block content %}
-    Thistle {{ version }}!
+
+    <div class="row">
+
+        <h1 style="text-align: center;margin-top: 2em;color: hsla(0, 0%, 0%, 0.25)">
+            Thistle Framework
+        </h1>
+
+        <p style="text-align: center; color: hsla(0, 0%, 0%, 0.25)">
+            {{ version }}
+        </p>
+
+    </div>
+
 {% endblock %}
 
