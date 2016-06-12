@@ -4,12 +4,10 @@
 
 **Author:** Affinity4
 
-**Version:** 0.0.2
-
 The Thistle Framework is built on the [Silex framework v1.3](http://silex.sensiolabs.org/doc/1.3). However, it comes with Controllers, Models, Views, a config file and routes already set up to use immediately.
 
 ### Views
-Views are setup to use Twig. You can use them in your controllers like so:
+Views are setup to use Twig. You can use them in your controllers with the ```view()``` function like so:
 
 ```
 // app/routes.php
@@ -45,7 +43,7 @@ class Page extends BaseController
 ```
 
 ### Models
-You can easily create a Doctrine Repository and attach ```$app``` by first creating a file in the app/models directory:
+You can easily create a Model and attach it to ```$app``` by first simply a file in the app/models directory:
 
 ```
 // app/models
@@ -60,7 +58,7 @@ class User extends BaseModel
 }
 ```
 
-That's all you need to do to tell this object to map to the 'users' table.
+That's all you need to do to tell this object to map to the 'users' table. Thistle will handle the rest.
 
 You'll now have access to that object from ```$app['user']```. You can use this to retrieve rows from the users table, insert, delete and update.
 
@@ -83,8 +81,8 @@ Would return:
 ```
 
 ```
-// SELECT * FROM users WHERE name = "Luke" LIMIT 1
-$app['user]->findOneBy(['name' => 'Luke Watts']) // Returns one row where name = "Luke"
+// SELECT * FROM users WHERE name = "Luke Watts" LIMIT 1
+$app['user]->findOneBy(['name' => 'Luke Watts']) // Returns one row where name = "Luke Watts"
 ```
 Would return:
 ```
@@ -131,5 +129,6 @@ $app->get('/test', function () use ($app) {
 
 ### Silex
 For anything else you can see the [Silex Documentation](http://silex.sensiolabs.org/doc/1.3) seeing as Thistle is mostly a boilerplate for Silex.
+
 ### Licence
 Licenced under GNU GPLv3
