@@ -1,11 +1,18 @@
 <?php
-
 namespace App\Core\Provider\Model;
 
 use Doctrine\DBAL\Connection;
 
 /**
+ * ------------------------------------------------------------
+ * Abstract Class Model
+ * ------------------------------------------------------------
+ *
  * Represents a base Repository.
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @package App\Core\Provider\Model
+ * @since 0.0.2
  */
 abstract class Model
 {
@@ -20,6 +27,7 @@ abstract class Model
     public $db;
 
     /**
+     *
      * @param Doctrine\DBAL\Connection $db
      */
     public function __construct(Connection $db)
@@ -28,10 +36,19 @@ abstract class Model
     }
 
     /**
+     * ------------------------------------------------------------
+     * Insert
+     * ------------------------------------------------------------
+     *
      * Inserts a table row with specified data.
      *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param array $data An associative array containing column-value pairs.
+     *
      * @return integer The number of affected rows.
+     *
      */
     public function insert(array $data)
     {
@@ -39,10 +56,18 @@ abstract class Model
     }
 
     /**
+     * ------------------------------------------------------------
+     * Update
+     * ------------------------------------------------------------
+     *
      * Executes an SQL UPDATE statement on a table.
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
      *
      * @param array $identifier The update criteria. An associative array containing column-value pairs.
      * @param array $types Types of the merged $data and $identifier arrays in that order.
+     *
      * @return integer The number of affected rows.
      */
     public function update(array $data, array $identifier)
@@ -51,9 +76,17 @@ abstract class Model
     }
 
     /**
+     * ------------------------------------------------------------
+     * Delete
+     * ------------------------------------------------------------
+     *
      * Executes an SQL DELETE statement on a table.
      *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @param array $identifier The deletion criteria. An associateve array containing column-value pairs.
+     *
      * @return integer The number of affected rows.
      */
     public function delete(array $identifier)
@@ -62,7 +95,14 @@ abstract class Model
     }
 
     /**
+     * ------------------------------------------------------------
+     * Find
+     * ------------------------------------------------------------
+     *
      * Returns a record by supplied id
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
      * 
      * @param mixed $id 
      * @return array
@@ -73,8 +113,15 @@ abstract class Model
     }
 
     /**
+     * ------------------------------------------------------------
+     * Find All
+     * ------------------------------------------------------------
+     *
      * Returns all records from this repository's table
-     * 
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.2
+     *
      * @return array
      */
     public function findAll()
