@@ -93,7 +93,7 @@ $app['debug'] = (isset($config['debug']) && $config['debug'] === true) ? true : 
  * @since 0.0.1
  */
 if ($app['debug']) {
-    $app->register(new App\Core\Provider\Whoops\WhoopsServiceProvider());
+    $app->register(new Thistle\App\Core\Provider\Whoops\WhoopsServiceProvider());
 }
 
 /**

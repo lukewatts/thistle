@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace Thistle\App\Controller;
 
 use Silex\Application;
 

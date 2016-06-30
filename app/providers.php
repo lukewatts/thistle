@@ -38,7 +38,7 @@ return [
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.1
      */
-    'App\Core\Provider\Model\ModelServiceProvider' => [
+    'Thistle\App\Core\Provider\Model\ModelServiceProvider' => [
         'models' => model_files_array()
     ],
 

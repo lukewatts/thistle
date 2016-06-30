@@ -12,4 +12,4 @@ use Symfony\Component\HttpFoundation\Response;
  * @since 0.0.1
  */
 
-$app->get('/', 'App\Controller\Page::home')->bind('home');
+$app->get('/', 'Thistle\App\Controller\Page::home')->bind('home');

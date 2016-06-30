@@ -1,5 +1,5 @@
 <?php
-namespace App\Model;
+namespace Thistle\App\Model;
 
 use App\Core\Provider\Model\Model;
 

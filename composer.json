@@ -10,10 +10,11 @@
     ],
     "autoload": {
         "psr-4": {
-            "App\\Controller\\": "app/controllers/",
-            "App\\Model\\": "app/models/",
-            "App\\Provider\\": "app/providers/",
-            "App\\Core\\Provider\\": "app/core/providers/"
+            "Thistle\\App\\Controller\\": "app/controllers/",
+            "Thistle\\App\\Model\\": "app/models/",
+            "Thistle\\App\\Provider\\": "app/providers/",
+            "Thistle\\App\\Core\\Provider\\": "app/core/providers/",
+            "Thistle\\Test\\": "tests/"
         }
     },
     "require": {
@@ -29,7 +30,8 @@
         "symfony/form": "^3.1",
         "symfony/asset": "^3.1",
         "symfony/finder": "^3.1",
-        "swiftmailer/swiftmailer": "^5.4"
+        "swiftmailer/swiftmailer": "^5.4",
+        "phpunit/phpunit": "^5.4"
     },
     "require-dev": {
         "symfony/var-dumper": "^3.1",

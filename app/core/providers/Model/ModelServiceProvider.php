@@ -1,5 +1,5 @@
 <?php
-namespace App\Core\Provider\Model;
+namespace Thistle\App\Core\Provider\Model;
 
 use Silex\ServiceProviderInterface;
 use Silex\Application;
