@@ -7,7 +7,7 @@
  *
  * Abstraction of the twig render method for easier use in
  * routes or controllers
- * 
+ *
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.1
  *
@@ -23,6 +23,15 @@ function view($view, array $params = [])
     return $app['twig']->render(sprintf('%s.html.twig', $view), $params);
 }
 
+/**
+ * @deprecated 0.0.6 in favour of Entities. Deprecated by Luke Watts
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.1
+ *
+ * @param array $exclude
+ * @return array
+ */
 function model_files_array($exclude = ['.', '..', 'BaseModel.php'])
 {
     $model_files =  array_diff(scandir(dirname(dirname(__DIR__)) . '/models'), $exclude);

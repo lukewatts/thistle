@@ -2,7 +2,7 @@
 namespace Thistle\App\Controller;
 
 use Silex\Application;
-use Symfony\Component\HttpFoundation\Response;
+use Thistle\App\Entity;
 
 /**
  * ------------------------------------------------------------
@@ -27,8 +27,6 @@ class Page extends BaseController
      */
     public function home(Application $app)
     {
-        return view('home', [
-            'version' => 'v0.0.3'
-        ]);
+        return view('home');
     }
 }

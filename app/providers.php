@@ -2,10 +2,30 @@
 return [
     /**
      * ------------------------------------------------------------
+     * Doctrine ORM Service Provider
+     * ------------------------------------------------------------
+     *
+     * Providers access to the Doctrine ORM including the Entity
+     * Manager. Requires DoctrineServiceProvider
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.6
+     */
+    'Thistle\App\Core\Provider\DoctrineORM\DoctrineORMServiceProvider' => [
+        'orm.isDevMode' => true,
+        'orm.paths'     => [
+            __DIR__ . '/entities'
+        ]
+    ],
+
+    /**
+     * ------------------------------------------------------------
      * Doctrine Service Provider
      * ------------------------------------------------------------
      *
-     * Twig is used for all of Thistle's templates and views
+     * The Doctrine Service is used to connect to the database and
+     * abstract the stand PDO class. It also is required by the
+     * DoctrineORMServiceProvider.
      *
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.2
@@ -33,7 +53,9 @@ return [
      * Repository Service Provider
      * ------------------------------------------------------------
      *
-     * Twig is used for all of Thistle's templates and views
+     * Repositories are a CRUD approximation of the Entity Manager
+     *
+     * @deprecated 0.0.6 in favour of Entities. Deprecated by Luke Watts
      *
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.1

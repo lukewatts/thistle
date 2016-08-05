@@ -42,7 +42,7 @@ class Page extends BaseController
 </body>
 ```
 
-### Models
+### Models (DEPRECATED as of v0.0.6)
 You can easily create a Model and attach it to ```$app``` by first simply a file in the app/models directory:
 
 ```
@@ -64,6 +64,147 @@ You'll now have access to that object from ```$app['user']```. You can use this 
 
 Note: The keys are created from the name of the file/class in the app/models directory.
 For example, if you're class is called UserPage, you will access that table using the ```$app['user_page']```
+
+### Entities
+Place Entities in the `app/entities` folder.
+
+```
+namespace Thistle\App\Entity;
+
+/**
+ * Class User
+ * @package App\Entity
+ * @Entity
+ * @Table(name="users")
+ */
+class User {
+    /**
+     * @var
+     * @Id
+     * @Column(type="integer")
+     * @GeneratedValue
+     */
+    private $id;
+
+    /**
+     * @var
+     * @Column(type="string")
+     */
+    private $name;
+
+    /**
+     * @var
+     * @Column(type="datetime")
+     */
+    private $created_at;
+
+    /**
+     * @var
+     * @Column(type="datetime")
+     */
+    private $updated_at;
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id)
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * @param mixed $name
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * @param mixed $created_at
+     */
+    public function setCreatedAt($created_at)
+    {
+        $this->created_at = $created_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * @param mixed $updated_at
+     */
+    public function setUpdatedAt($updated_at)
+    {
+        $this->updated_at = $updated_at;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updated_at;
+    }
+}
+
+
+```
+
+#### Creating the Database Tables from defined Entities
+You can then create the table using the `thistle` console command from the project root:
+
+```
+thistle orm:schema-tool:create
+```
+
+#### Inserts
+To insert a new row you can create a new object and user the setter methods you defined to insert fields:
+
+```
+$User = new Thistle\App\Entity\User();
+$User->setName('Luke');
+$User->setCreatedAt(new \DateTime('now'));
+$User->setUpdatedAt(new \DateTime('now'));
+
+$app['em']->persist($User);
+```
+
+Once you are ready to save you can call the flush method on the entity manager;
+
+```
+$app['em']->flush();
+```
+
+#### SELECT
+
+To find a row by ID use:
+
+```
+$app['em']->find('Thistle\App\Entity\User', 1); // SELECT * FROM users WHERE id = 1 LIMIT 1
+```
+
 
 ### Useful Methods when using Models
 ```

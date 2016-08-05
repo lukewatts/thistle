@@ -8,6 +8,8 @@ use App\Core\Provider\Model\Model;
  * Class BaseModel
  * ------------------------------------------------------------
  *
+ * @deprecated 0.0.6 in favour of Entities. Deprecated by Luke Watts
+ *
  * @author Luke Watts <luke@affinity4.ie>
  * @package App\Model
  * @since 0.0.2

@@ -14,7 +14,7 @@
  */
 return [
     'debug' => true,
-    'url'   => 'http://127.0.0.1/sites/thistle',
+    'url'   => 'http://thistle.dev',
     'assets_dir' => 'assets',
     'db'    => [
         'dbname'    => 'thistle',

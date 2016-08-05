@@ -13,6 +13,7 @@
             "Thistle\\App\\Controller\\": "app/controllers/",
             "Thistle\\App\\Model\\": "app/models/",
             "Thistle\\App\\Provider\\": "app/providers/",
+            "Thistle\\App\\Entity\\": "app/entities/",
             "Thistle\\App\\Core\\Console\\": "app/core/console/",
             "Thistle\\App\\Core\\Provider\\": "app/core/providers/",
             "Thistle\\Test\\": "tests/"
