@@ -12,7 +12,8 @@ use Doctrine\ORM\EntityManager;
  * ------------------------------------------------------------
  *
  * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.6
+ * @since 0.0.7
+ *
  * @package Thistle\App\Core\Provider\DoctrineORM
  */
 class DoctrineORMServiceProvider implements ServiceProviderInterface
@@ -21,6 +22,9 @@ class DoctrineORMServiceProvider implements ServiceProviderInterface
      * ------------------------------------------------------------
      * Register
      * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.7
      *
      * @param Application $app
      */
@@ -47,6 +51,9 @@ class DoctrineORMServiceProvider implements ServiceProviderInterface
      * ------------------------------------------------------------
      * Boot
      * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.7
      *
      * @param Application $app
      */
