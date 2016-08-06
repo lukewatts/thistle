@@ -2,6 +2,24 @@
 return [
     /**
      * ------------------------------------------------------------
+     * Password Service Provider
+     * ------------------------------------------------------------
+     *
+     * Provides access to the Password class. The Password class
+     * encrypts and verifies passwords as well as setting the
+     * appropriate cost for the current server configuration.
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.7
+     */
+    'Thistle\App\Core\Provider\Password\PasswordServiceProvider' => [
+        'password.encryption' => PASSWORD_BCRYPT,
+        'password.cost' => 8,
+        'password.tolerance' => 0.05
+    ],
+
+    /**
+     * ------------------------------------------------------------
      * Doctrine ORM Service Provider
      * ------------------------------------------------------------
      *

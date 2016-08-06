@@ -203,13 +203,12 @@ To find a row by ID use:
 
 ```
 $app['em']->find('Thistle\App\Entity\User', 1); // SELECT * FROM users WHERE id = 1 LIMIT 1
-```
+``` 
 
-
-### Useful Methods when using Models
+### Useful Methods when using Entities
 ```
 // SELECT * FROM users WHERE id = 1 LIMIT 1
-$app['user']->find(1) // Finds the user with id of 1
+$app['em']->find('Thistle\App\Entity\User', 1) // Finds the user with id of 1
 ```
 
 Would return:
@@ -217,25 +216,26 @@ Would return:
 [
     'id'    => '1',
     'name'  => 'Luke Watts',
-    'type'  => 'author'
+    'type'  => 'Admin',
+    ...
 ]
 ```
 
 ```
 // SELECT * FROM users WHERE name = "Luke Watts" LIMIT 1
-$app['user]->findOneBy(['name' => 'Luke Watts']) // Returns one row where name = "Luke Watts"
+$app['em']->getRepository('Thistle\App\Entity\User')->findOneBy(['name' => 'Luke Watts']) // Returns one row where name = "Luke Watts"
 ```
 Would return:
 ```
 [
     'id'    => '1',
     'name'  => 'Luke Watts',
-    'type'  => 'author'
+    'type'  => 'Admin'
 ]
 ```
 ```
 // SELECT * FROM users WHERE name
-$app['users']->findBy(['type' => "standard"]); // Returns array of users where type = "standard"
+$app['em']->getRepository('Thistle\App\Entity\User')->findBy(['type' => "standard"]); // Returns array of users where type = "standard"
 ```
 Would return
 ```
@@ -252,6 +252,45 @@ Would return
     ]
 ]
 ```
+
+### Password Encryption
+Passwords can be encrypted and verified through the `$app['password']` service provider. This uses the native PHP `password_hash` and `password_verify` functions with the `PASSWORD_BCRYPT` algorithm by default.
+
+#### Password::make()
+To generate and return a password hash use: 
+
+```
+$app['password']->make('P@55w0rd'); // Returns $2y$09$ts2u4/Dis4W4YqxOdgufyuAuAY4zaYfPRw5p5EainFfQ05Or/KYAy
+```
+
+#### Password::verfiy()
+To verify a password you first need to pass the plain unencrypted password and the hashed password to the `$app['password']::verify()` method:
+
+```
+$User = $app['em']->getRepository('Thistle\App\Entity\User')->findOneBy(['username' => 'LukeWatts']);
+
+$app['password']->verify('P@55w0rd', $User->getPassword());
+
+```
+
+#### Password Cost
+By default the `$app['password']->make()` method will autodetect the best 'cost' for your current servers configuration. This will override the cost set in the `providers.php` file.
+ 
+To set your own cost you first should define it in the `Thistle\App\Core\Provider\Password\Password` parameters array in `app/providers.php`:
+
+```
+'Thistle\App\Core\Provider\Password\Password' => [
+    'password.cost' => 12
+],
+``` 
+
+Then when using `$app['password']->make()` you will need to set the second parameter `$auto_optimize_cost` to `false`:
+
+```
+$app['password']->make('P@55w0rd', false);
+``` 
+
+___NOTE: setting the password.cost value too high will slow down load speeds whenever `$app['password']->make()` is used.___
 
 ### Routing and Controllers
 Routes can be found in the app/routes.php file. For more information on routes see the [Silex routing documentation](http://silex.sensiolabs.org/doc/1.3/usage.html#routing)

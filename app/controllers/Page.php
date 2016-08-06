@@ -2,7 +2,7 @@
 namespace Thistle\App\Controller;
 
 use Silex\Application;
-use Thistle\App\Entity;
+use Thistle\App\Entity\User;
 
 /**
  * ------------------------------------------------------------
@@ -27,6 +27,8 @@ class Page extends BaseController
      */
     public function home(Application $app)
     {
-        return view('home');
+        $User = $app['em']->getRepository('Thistle\App\Entity\User')->findOneBy(['username' => 'LukeWatts']);
+
+        return view('home', ['user' => $app['password']->verify('gethsemane', $User->getPassword())]);
     }
 }
