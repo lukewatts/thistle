@@ -27,8 +27,6 @@ class Page extends BaseController
      */
     public function home(Application $app)
     {
-        $User = $app['em']->getRepository('Thistle\App\Entity\User')->findOneBy(['username' => 'LukeWatts']);
-
-        return view('home', ['user' => $app['password']->verify('gethsemane', $User->getPassword())]);
+        return view('home');
     }
 }
