@@ -3,6 +3,7 @@ namespace Thistle\App\Core\Console\Generate\Entity;
 
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
+use Thistle\App\Core\Console\Generate\GenerateInterface;
 
 /**
  * ------------------------------------------------------------
@@ -14,13 +15,8 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @package Thistle\App\Core\Console\Generate\Entity
  */
-class Entity extends EntityFactory
+class Entity extends EntityFactory implements GenerateInterface
 {
-    /**
-     * @var
-     */
-    public $entities_path;
-
     /**
      * ------------------------------------------------------------
      * Constructor
@@ -29,15 +25,16 @@ class Entity extends EntityFactory
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.8
      *
-     *
      * @param $class_name
      * @param $table_name
      */
-    public function __construct($class_name, $table_name)
+    public function __construct($entity_name, $table_name)
     {
-        $this->setClassName($class_name);
+        $this->setEntityName($entity_name);
         $this->setTableName($table_name);
-        $this->setEntitiesPath(dirname(dirname(dirname(dirname(__DIR__)))) . '/entities');
+        $this->setClassName(__CLASS__);
+        $this->setOutfile($entity_name);
+        $this->setPath('entities');
     }
 
     /**
@@ -50,50 +47,25 @@ class Entity extends EntityFactory
      *
      * @param Filesystem $fs
      * @throws \Exception
+     *
+     * @return void
      */
     public function save(Filesystem $fs)
     {
-        if ($fs->exists($this->getClassName() . '.php')) {
+        if ($fs->exists(sprintf('%s/%s.php', $this->getPath(), $this->getEntityName()))) {
             // 'A file with that name already exists in the Entity folder
-            throw new \Exception(sprintf('A file with the name %s.php already exists in the entity folder', $this->getClassName()));
+            throw new \Exception(sprintf('A file with the name %s.php already exists in the entity folder', $this->getEntityName()));
         } else {
             // Try create file with contents
             try {
-                $fs->dumpFile(sprintf('%s/%s.php', $this->getEntitiesPath(), $this->getClassName()), $this->generate());
+                $this->generate([
+                    $this->getTableName(),
+                    $this->getEntityName()
+                ]);
             } catch(IOException $e) {
                 echo $e->getMessage();
             }
             // Catch error and display them.
         }
-    }
-
-    /**
-     * ------------------------------------------------------------
-     * Set Entities Path
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @param mixed $entities_path
-     */
-    public function setEntitiesPath($entities_path)
-    {
-        $this->entities_path = $entities_path;
-    }
-
-    /**
-     * ------------------------------------------------------------
-     * Get Entities Path
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @return mixed
-     */
-    public function getEntitiesPath()
-    {
-        return $this->entities_path;
     }
 }

@@ -2,68 +2,48 @@
 namespace Thistle\App\Core\Console\Generate\Entity;
 
 use Thistle\App\Core\Console\Generate\GenerateFactoryInterface;
+use Thistle\App\Core\Console\Generate\Generator;
 
 /**
  * ------------------------------------------------------------
  * Class EntityFactory
  * ------------------------------------------------------------
  *
- * @author Luke Watts <luke@affinity4>
+ * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.8
  *
  * @package Thistle\App\Core\Console\Generate\Entity
  */
-class EntityFactory implements GenerateFactoryInterface
+class EntityFactory extends Generator implements GenerateFactoryInterface
 {
     /**
      * @var
      */
-    protected $class_name;
+    public $entity_name;
 
     /**
      * @var
      */
-    protected $table_name;
+    public $table_name;
 
     /**
      * ------------------------------------------------------------
-     * Generate
+     * Set Entity Name
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.8
      *
-     * @return string
+     * @param mixed $entity_name
      */
-    public function generate()
+    public function setEntityName($entity_name)
     {
-        return sprintf(
-            file_get_contents(__DIR__ . '/views/entity.txt'),
-            $this->getTableName(),
-            $this->getTableName(),
-            $this->getClassName(),
-            $this->getClassName(),
-            $this->getClassName());
+        $this->entity_name = $entity_name;
     }
 
     /**
      * ------------------------------------------------------------
-     * Set Class Name
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @param mixed $class_name
-     */
-    public function setClassName($class_name)
-    {
-        $this->class_name = $class_name;
-    }
-
-    /**
-     * ------------------------------------------------------------
-     * Get Class Name
+     * Get Entity Name
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
@@ -71,14 +51,14 @@ class EntityFactory implements GenerateFactoryInterface
      *
      * @return mixed
      */
-    public function getClassName()
+    public function getEntityName()
     {
-        return $this->class_name;
+        return $this->entity_name;
     }
 
     /**
      * ------------------------------------------------------------
-     * Set Table Name
+     * Set TableName
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>
@@ -93,7 +73,7 @@ class EntityFactory implements GenerateFactoryInterface
 
     /**
      * ------------------------------------------------------------
-     * Get Table Name
+     * Get TableName
      * ------------------------------------------------------------
      *
      * @author Luke Watts <luke@affinity4.ie>

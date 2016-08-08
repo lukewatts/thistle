@@ -10,8 +10,26 @@ use Symfony\Component\Filesystem\Filesystem;
 use Thistle\App\Core\Console\Generate\Controller\Controller;
 use Thistle\App\Core\Console\Generate\View\View;
 
+/**
+ * ------------------------------------------------------------
+ * Class GenerateControllerCommand
+ * ------------------------------------------------------------
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.8
+ *
+ * @package Thistle\App\Core\Console\Command
+ */
 class GenerateControllerCommand extends Command
 {
+    /**
+     * ------------------------------------------------------------
+     * Configure
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     */
     protected function configure()
     {
         $this->setName('generate:controller')
@@ -21,6 +39,17 @@ class GenerateControllerCommand extends Command
             ->addOption('no-view', '-nv', InputOption::VALUE_NONE, 'Do not automatically generate a view for the main method');
     }
 
+    /**
+     * ------------------------------------------------------------
+     * Execute
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @param InputInterface $input
+     * @param OutputInterface $output
+     */
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $controller = new Controller($input->getArgument('controller'), $input->getArgument('method'));

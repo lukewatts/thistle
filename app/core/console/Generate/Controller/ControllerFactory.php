@@ -2,6 +2,7 @@
 namespace Thistle\App\Core\Console\Generate\Controller;
 
 use Thistle\App\Core\Console\Generate\GenerateFactoryInterface;
+use Thistle\App\Core\Console\Generate\Generator;
 
 /**
  * ------------------------------------------------------------
@@ -13,7 +14,7 @@ use Thistle\App\Core\Console\Generate\GenerateFactoryInterface;
  *
  * @package Thistle\App\Core\Console\Generate\Controller
  */
-class ControllerFactory implements GenerateFactoryInterface
+class ControllerFactory extends Generator implements GenerateFactoryInterface
 {
     /**
      * @var
@@ -24,27 +25,6 @@ class ControllerFactory implements GenerateFactoryInterface
      * @var
      */
     protected $method;
-
-    /**
-     * ------------------------------------------------------------
-     * Generate
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @return string
-     */
-    public function generate()
-    {
-        return sprintf(file_get_contents(__DIR__ . '/views/controller.txt'),
-            $this->getController(),
-            $this->getController(),
-            $this->getMethod(),
-            $this->getMethod(),
-            $this->getMethod()
-        );
-    }
 
     /**
      * ------------------------------------------------------------

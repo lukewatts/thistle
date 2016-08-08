@@ -3,29 +3,20 @@ namespace Thistle\App\Core\Console\Generate\Controller;
 
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
+use Thistle\App\Core\Console\Generate\GenerateInterface;
 
 /**
  * ------------------------------------------------------------
  * Class Controller
  * ------------------------------------------------------------
  *
- * @package Thistle\App\Core\Console\Generate\Controller
- *
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.8
+ *
+ * @package Thistle\App\Core\Console\Generate\Controller
  */
-class Controller extends ControllerFactory
+class Controller extends ControllerFactory implements GenerateInterface
 {
-    /**
-     * @var
-     */
-    public $path;
-
-    /**
-     * @var
-     */
-    public $app_path;
-
     /**
      * ------------------------------------------------------------
      * Constructor
@@ -40,6 +31,8 @@ class Controller extends ControllerFactory
     public function __construct($controller, $method)
     {
         $this->setPath('controllers');
+        $this->setClassName(__CLASS__);
+        $this->setOutfile($controller);
         $this->setController($controller);
         $this->setMethod($method);
     }
@@ -63,72 +56,17 @@ class Controller extends ControllerFactory
         } else {
             // Try create file with contents
             try {
-                $fs->dumpFile(sprintf('%s/%s.php', $this->getPath(), $this->getController()), $this->generate());
+                $this->generate([
+                    $this->getController(),
+                    $this->getController(),
+                    ucfirst($this->getMethod()),
+                    $this->getMethod(),
+                    $this->getMethod()
+                ]);
             } catch(IOException $e) {
                 echo $e->getMessage();
             }
             // Catch error and display them.
         }
-    }
-
-    /**
-     * ------------------------------------------------------------
-     * Set Path
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @param mixed $path
-     */
-    public function setPath($path)
-    {
-        $this->setAppPath(dirname(dirname(dirname(dirname(__DIR__)))));
-        $this->path = sprintf('%s/%s', $this->getAppPath(), $path);
-    }
-
-    /**
-     * ------------------------------------------------------------
-     * Get Path
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @return mixed
-     */
-    public function getPath()
-    {
-        return $this->path;
-    }
-
-    /**
-     * ------------------------------------------------------------
-     * Set App Path
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @param mixed $app_path
-     */
-    public function setAppPath($app_path)
-    {
-        $this->app_path = $app_path;
-    }
-
-    /**
-     * ------------------------------------------------------------
-     * Get App Path
-     * ------------------------------------------------------------
-     *
-     * @author Luke Watts <luke@affinity4.ie>
-     * @since 0.0.8
-     *
-     * @return mixed
-     */
-    public function getAppPath()
-    {
-        return $this->app_path;
     }
 }

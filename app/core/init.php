@@ -62,7 +62,7 @@ $config = require_once dirname(__DIR__) . '/config.php';
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.6
  */
-$app['version'] = '0.0.8';
+$app['version'] = '0.0.9-beta';
 
 /**
  * ------------------------------------------------------------

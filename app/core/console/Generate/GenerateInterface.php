@@ -1,27 +1,30 @@
 <?php
 namespace Thistle\App\Core\Console\Generate;
 
+use Symfony\Component\Filesystem\Filesystem;
+
 /**
  * ------------------------------------------------------------
- * Interface GenerateFactoryInterface
+ * Interface GenerateInterface
  * ------------------------------------------------------------
  *
- * @author Luke Watts <luke@affinity4>
+ * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.8
  *
  * @package Thistle\App\Core\Console\Generate
  */
-interface GenerateFactoryInterface
+interface GenerateInterface
 {
     /**
      * ------------------------------------------------------------
-     * Render
+     * Save
      * ------------------------------------------------------------
      *
-     * @author Luke Watts <luke@affinity4>
-     * @since 0.0.9
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
      *
+     * @param Filesystem $fs
      * @return mixed
      */
-    public function render(array $args);
+    public function save(Filesystem $fs);
 }
