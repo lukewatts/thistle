@@ -1,0 +1,25 @@
+<?php
+namespace Thistle\App\Controller;
+
+use Silex\Application;
+
+/**
+ * ------------------------------------------------------------
+ * Class %s
+ * ------------------------------------------------------------
+ */
+class %s extends BaseController
+{
+    /**
+     * ------------------------------------------------------------
+     * %s
+     * ------------------------------------------------------------
+     *
+     * @param Application $app
+     * @return mixed
+     */
+    public function %s(Application $app)
+    {
+        return view('%s');
+    }
+}

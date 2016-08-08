@@ -1,0 +1,7 @@
+#!/usr/bin/env php
+<?php
+/**
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.8
+ */
+include 'thistle.php';

@@ -13,6 +13,6 @@
  * @author  Luke Watts <luke@affinity4.ie>
  * @since   0.0.1
  *
- * @version 0.0.8-beta
+ * @version 0.0.8
  */
 require_once __DIR__ . '/app/core/init.php';
