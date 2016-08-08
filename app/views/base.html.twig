@@ -5,13 +5,20 @@
     <title>{% block title %}: Thistle Framework by Affinity4{% endblock %}
     </title>
 
-    <link rel="stylesheet" href="{{ asset('libs/foundation/6.2.3/css/foundation.min.css') }}">
+    <!-- STYLES -->
+    <link rel="stylesheet" type="text/css" href="{{ asset('libs/foundation/6.2.3/css/foundation.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}"/>
 
+    <!-- SCRIPTS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
 </head>
 <body>
 {% block content %}{% endblock %}
+
+<footer class="footer">
+    <p class="footer-text">{{ "now"|date('Y') }} Developed by Luke Watts. Maintained by Affinty4.ie</p>
+</footer>
 
 <script src="{{ asset('libs/foundation/6.2.3/js/app.js') }}"></script>
 </body>
