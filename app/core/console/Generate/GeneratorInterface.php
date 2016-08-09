@@ -3,7 +3,7 @@ namespace Thistle\App\Core\Console\Generate;
 
 /**
  * ------------------------------------------------------------
- * Interface GenerateFactoryInterface
+ * Interface GeneratorInterface
  * ------------------------------------------------------------
  *
  * @author Luke Watts <luke@affinity4>
@@ -11,7 +11,7 @@ namespace Thistle\App\Core\Console\Generate;
  *
  * @package Thistle\App\Core\Console\Generate
  */
-interface GenerateFactoryInterface
+interface GeneratorInterface
 {
     /**
      * ------------------------------------------------------------

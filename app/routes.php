@@ -1,6 +1,4 @@
 <?php
-use Symfony\Component\HttpFoundation\Response;
-
 /**
  * ------------------------------------------------------------
  * Routes
@@ -13,3 +11,9 @@ use Symfony\Component\HttpFoundation\Response;
  */
 
 $app->get('/', 'Thistle\App\Controller\Page::home')->bind('home');
+
+$app->get('/version', function () use ($app) {
+    return $app['version'];
+});
+
+$app->get('/controller-service-example', 'controller.page:home');

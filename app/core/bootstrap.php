@@ -1,5 +1,17 @@
 <?php
-use Symfony\Component\HttpFoundation\Request;
+/**
+ * ------------------------------------------------------------
+ * Bootstrap
+ * ------------------------------------------------------------
+ *
+ * This file should be used when you need access to the $app
+ * variable and the Service Providers without running the
+ * entire Application. For example, the console needs access
+ * to $app at times without the output from the routes.
+ *
+ * @author Luke Watts <luke@affinity4.ie>
+ * @since 0.0.9
+ */
 
 /**
  * ------------------------------------------------------------
@@ -13,18 +25,6 @@ use Symfony\Component\HttpFoundation\Request;
  * @since 0.0.1
  */
 require_once dirname(dirname(__DIR__)) . '/vendor/autoload.php';
-
-/**
- * ------------------------------------------------------------
- * Request
- * ------------------------------------------------------------
- *
- * Request global for use outside of the $app request cycle
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
- */
-$request = Request::createFromGlobals();
 
 /**
  * ------------------------------------------------------------
@@ -51,18 +51,6 @@ $app = new Silex\Application;
  * @since 0.0.1
  */
 $config = require_once dirname(__DIR__) . '/config.php';
-
-/**
- * ------------------------------------------------------------
- * App: Version
- * ------------------------------------------------------------
- *
- * The version of the current Thistle Framework.
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.6
- */
-$app['version'] = '0.0.9-beta';
 
 /**
  * ------------------------------------------------------------
@@ -95,21 +83,6 @@ $app['debug'] = (isset($config['debug']) && $config['debug'] === true) ? true : 
 
 /**
  * ------------------------------------------------------------
- * Whoops Service Provider
- * ------------------------------------------------------------
- *
- * If $app'debug] is true we register the Whoops Service
- * Provider
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
- */
-if ($app['debug']) {
-    $app->register(new Thistle\App\Core\Provider\Whoops\WhoopsServiceProvider());
-}
-
-/**
- * ------------------------------------------------------------
  * Functions
  * ------------------------------------------------------------
  *
@@ -138,50 +111,4 @@ foreach ($providers as $provider => $options) {
     else $app->register(new $provider(), $options);
 }
 
-/**
- * ------------------------------------------------------------
- * Controller Services
- * ------------------------------------------------------------
- *
- * Define your Service Controllers in this file.
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.9
- */
-require_once dirname(__DIR__) . '/controllers/services/services.php';
-
-/**
- * ------------------------------------------------------------
- * Twig: Extend
- * ------------------------------------------------------------
- *
- * Extend Twig by adding functions, filters and globals
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.3
- */
-require_once dirname(__DIR__) . '/twig/extend.php';
-
-/**
- * ------------------------------------------------------------
- * Routes
- * ------------------------------------------------------------
- *
- * Thistle routes
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
- */
-require_once dirname(__DIR__) . '/routes.php';
-
-/**
- * ------------------------------------------------------------
- * App: Run
- * ------------------------------------------------------------
- *
- * Run the application
- *
- * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
- */
-$app->run();
+return $app;

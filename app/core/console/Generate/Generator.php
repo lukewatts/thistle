@@ -13,8 +13,10 @@ use Symfony\Component\Filesystem\Filesystem;
  *
  * @package Thistle\App\Core\Console\Generate
  */
-class Generator implements GenerateFactoryInterface
+class Generator implements GeneratorInterface
 {
+    const IS_ROOT = true;
+
     /**
      * @var
      */
@@ -46,6 +48,39 @@ class Generator implements GenerateFactoryInterface
     public $class_name;
 
     /**
+     * @var
+     */
+    public $root_path;
+
+    /**
+     * @var
+     */
+    public $dumpfile;
+
+    /**
+     * ------------------------------------------------------------
+     * Generator constructor
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4>
+     * @since 0.0.9
+     *
+     * @param $path
+     * @param $outfile
+     * @param $class_instance
+     */
+    public function __construct($path, $outfile, $class_instance)
+    {
+        $this->setAppPath(dirname(dirname(dirname(__DIR__))));
+        $this->setRootPath(dirname($this->getAppPath()));
+        $this->setPath($path);
+        $this->setOutfile($outfile);
+        $this->setClassName($class_instance);
+        $this->setDumpfile();
+
+    }
+
+    /**
      * ------------------------------------------------------------
      * Generate
      * ------------------------------------------------------------
@@ -56,15 +91,12 @@ class Generator implements GenerateFactoryInterface
      * @param Filesystem $fs
      * @param array $args
      */
-    public function generate(array $args)
+    public function generate(array $args, Filesystem $fs)
     {
-        $fs = new Filesystem();
-
         $fs->dumpFile(
             sprintf(
-                '%s/%s.%s',
-                $this->getPath(),
-                $this->getOutfile(),
+                '%s.%s',
+                $this->getDumpfile(),
                 $this->getExtension()
             ),
             $this->render($args)
@@ -117,8 +149,11 @@ class Generator implements GenerateFactoryInterface
      */
     public function setPath($path)
     {
-        $this->setAppPath(dirname(dirname(dirname(__DIR__))));
-        $this->path = sprintf('%s/%s', $this->getAppPath(), $path);
+        if ($path === Generator::IS_ROOT) {
+            $this->path = sprintf('%s/', $this->getRootPath());
+        } else {
+            $this->path = sprintf('%s/%s', $this->getAppPath(), $path);
+        }
     }
 
     /**
@@ -300,5 +335,51 @@ class Generator implements GenerateFactoryInterface
     public function getClassName()
     {
         return $this->class_name;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Set Root Path
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4>
+     * @since 0.0.9
+     *
+     * @param mixed $root_path
+     */
+    public function setRootPath($root_path)
+    {
+        $this->root_path = $root_path;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Get Root Path
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4>
+     * @since 0.0.9
+     *
+     * @return mixed
+     */
+    public function getRootPath()
+    {
+        return $this->root_path;
+    }
+
+    /**
+     * @param mixed $dumpfile
+     */
+    public function setDumpfile()
+    {
+        $this->dumpfile = $this->getPath() . '/' . $this->getOutfile();
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getDumpfile()
+    {
+        return $this->dumpfile;
     }
 }

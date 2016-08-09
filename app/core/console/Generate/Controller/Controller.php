@@ -4,6 +4,7 @@ namespace Thistle\App\Core\Console\Generate\Controller;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Thistle\App\Core\Console\Generate\GenerateInterface;
+use Thistle\App\Core\Console\Generate\Generator;
 
 /**
  * ------------------------------------------------------------
@@ -15,8 +16,18 @@ use Thistle\App\Core\Console\Generate\GenerateInterface;
  *
  * @package Thistle\App\Core\Console\Generate\Controller
  */
-class Controller extends ControllerFactory implements GenerateInterface
+class Controller extends Generator implements GenerateInterface
 {
+    /**
+     * @var
+     */
+    protected $controller;
+
+    /**
+     * @var
+     */
+    protected $method;
+
     /**
      * ------------------------------------------------------------
      * Constructor
@@ -25,14 +36,13 @@ class Controller extends ControllerFactory implements GenerateInterface
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.8
      *
-     * @param $class_name
-     * @param $table_name
+     * @param $controller
+     * @param $method
      */
     public function __construct($controller, $method)
     {
-        $this->setPath('controllers');
-        $this->setClassName(__CLASS__);
-        $this->setOutfile($controller);
+        parent::__construct('controllers', $controller, __CLASS__);
+
         $this->setController($controller);
         $this->setMethod($method);
     }
@@ -47,6 +57,8 @@ class Controller extends ControllerFactory implements GenerateInterface
      *
      * @param Filesystem $fs
      * @throws \Exception
+     *
+     * @return void
      */
     public function save(Filesystem $fs)
     {
@@ -62,11 +74,72 @@ class Controller extends ControllerFactory implements GenerateInterface
                     ucfirst($this->getMethod()),
                     $this->getMethod(),
                     $this->getMethod()
-                ]);
+                ], $fs);
             } catch(IOException $e) {
+                // Catch error and display them.
                 echo $e->getMessage();
             }
-            // Catch error and display them.
+
         }
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Set Controller
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @param mixed $controller
+     */
+    public function setController($controller)
+    {
+        $this->controller = $controller;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Get Controller
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @return mixed
+     */
+    public function getController()
+    {
+        return $this->controller;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Set Method
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @param mixed $method
+     */
+    public function setMethod($method)
+    {
+        $this->method = $method;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Get Method
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @return mixed
+     */
+    public function getMethod()
+    {
+        return $this->method;
     }
 }

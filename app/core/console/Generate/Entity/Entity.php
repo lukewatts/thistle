@@ -4,6 +4,7 @@ namespace Thistle\App\Core\Console\Generate\Entity;
 use Symfony\Component\Filesystem\Exception\IOException;
 use Symfony\Component\Filesystem\Filesystem;
 use Thistle\App\Core\Console\Generate\GenerateInterface;
+use Thistle\App\Core\Console\Generate\Generator;
 
 /**
  * ------------------------------------------------------------
@@ -15,8 +16,18 @@ use Thistle\App\Core\Console\Generate\GenerateInterface;
  *
  * @package Thistle\App\Core\Console\Generate\Entity
  */
-class Entity extends EntityFactory implements GenerateInterface
+class Entity extends Generator implements GenerateInterface
 {
+    /**
+     * @var
+     */
+    public $entity_name;
+
+    /**
+     * @var
+     */
+    public $table_name;
+
     /**
      * ------------------------------------------------------------
      * Constructor
@@ -30,11 +41,10 @@ class Entity extends EntityFactory implements GenerateInterface
      */
     public function __construct($entity_name, $table_name)
     {
+        parent::__construct('entities', $entity_name, __CLASS__);
+
         $this->setEntityName($entity_name);
         $this->setTableName($table_name);
-        $this->setClassName(__CLASS__);
-        $this->setOutfile($entity_name);
-        $this->setPath('entities');
     }
 
     /**
@@ -61,11 +71,72 @@ class Entity extends EntityFactory implements GenerateInterface
                 $this->generate([
                     $this->getTableName(),
                     $this->getEntityName()
-                ]);
+                ], $fs);
             } catch(IOException $e) {
+                // Catch error and display them.
                 echo $e->getMessage();
             }
-            // Catch error and display them.
+
         }
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Set Entity Name
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @param mixed $entity_name
+     */
+    public function setEntityName($entity_name)
+    {
+        $this->entity_name = $entity_name;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Get Entity Name
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @return mixed
+     */
+    public function getEntityName()
+    {
+        return $this->entity_name;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Set TableName
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @param mixed $table_name
+     */
+    public function setTableName($table_name)
+    {
+        $this->table_name = $table_name;
+    }
+
+    /**
+     * ------------------------------------------------------------
+     * Get TableName
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.8
+     *
+     * @return mixed
+     */
+    public function getTableName()
+    {
+        return $this->table_name;
     }
 }

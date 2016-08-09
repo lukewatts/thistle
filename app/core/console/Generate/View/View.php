@@ -30,9 +30,7 @@ class View extends Generator implements GenerateInterface
      */
     public function __construct($outfile)
     {
-        $this->setPath('views');
-        $this->setClassName(__CLASS__);
-        $this->setOutfile($outfile);
+        parent::__construct('views', $outfile, __CLASS__);
     }
 
     /**
@@ -56,7 +54,7 @@ class View extends Generator implements GenerateInterface
         } else {
             // Try create file with contents
             try {
-                $this->generate([ucfirst($this->getOutfile())]);
+                $this->generate([ucfirst($this->getOutfile())], $fs);
             } catch(IOException $e) {
                 // Catch error and display them.
                 echo $e->getMessage();

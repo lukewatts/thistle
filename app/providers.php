@@ -2,6 +2,36 @@
 return [
     /**
      * ------------------------------------------------------------
+     * Service Controller Service Provider
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.9
+     */
+    'Silex\Provider\ServiceControllerServiceProvider' => [],
+
+    /**
+     * ------------------------------------------------------------
+     * Finder Service Provider
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.9
+     */
+    'Thistle\App\Core\Provider\Finder\FinderServiceProvider' => [],
+
+    /**
+     * ------------------------------------------------------------
+     * Http Fragment Service Provider
+     * ------------------------------------------------------------
+     *
+     * @author Luke Watts <luke@affinity4.ie>
+     * @since 0.0.9
+     */
+    'Silex\Provider\HttpFragmentServiceProvider' => [],
+
+    /**
+     * ------------------------------------------------------------
      * Password Service Provider
      * ------------------------------------------------------------
      *
