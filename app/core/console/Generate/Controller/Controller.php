@@ -18,6 +18,8 @@ use Thistle\App\Core\Console\Generate\Generator;
  */
 class Controller extends Generator implements GenerateInterface
 {
+    use \Thistle\App\Core\Console\Generate\RenderTrait;
+
     /**
      * @var
      */
