@@ -31,38 +31,42 @@ $request = Request::createFromGlobals();
  * App: Init
  * ------------------------------------------------------------
  *
- * Initialize Silex. Silex is the heart of Thistle. Silex
- * handles Dependency Injection, routing, and middleware
+ * Initialize Thistle. Silex is the heart of Thistle. Silex
+ * handles Dependency Injection, routing, and middleware while
+ * Thistle handles it's own setup.
  *
  * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
+ * @since 0.0.9
  */
-$app = new Silex\Application;
+$app = new \Thistle\Application;
 
 /**
  * ------------------------------------------------------------
- * Configuration
+ * App: Config
  * ------------------------------------------------------------
  *
- * Load our configuration array for use throughout our
- * application
+ * The configuration variables from app/config.php
  *
  * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
+ * @since 0.0.9
+ *
  */
-$config = require_once dirname(__DIR__) . '/config.php';
+$app->setConfig(dirname(__DIR__) . '/config.json');
+$app['config'] = $app->getConfig();
 
 /**
  * ------------------------------------------------------------
  * App: Version
  * ------------------------------------------------------------
  *
- * The version of the current Thistle Framework.
+ * Set the app version based on the comments block in
+ * index.php
  *
  * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.6
+ * @since 0.0.9
+ *
  */
-$app['version'] = '0.0.9-beta';
+$app['version'] = $app->version();
 
 /**
  * ------------------------------------------------------------
@@ -75,7 +79,7 @@ $app['version'] = '0.0.9-beta';
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.1
  */
-$app['url'] = (isset($config['url'])) ? $config['url'] : sprintf('http://%s', $request->server->get('SERVER_NAME'));
+$app['url'] = $app->url();
 
 /**
  * ------------------------------------------------------------
@@ -89,24 +93,22 @@ $app['url'] = (isset($config['url'])) ? $config['url'] : sprintf('http://%s', $r
  * display of errors
  *
  * @author Luke Watts <luke@affinity4.ie>
- * @since 0.0.1
+ * @since 0.0.9
  */
-$app['debug'] = (isset($config['debug']) && $config['debug'] === true) ? true : false;
+$app['debug'] = $app->debug();
 
 /**
  * ------------------------------------------------------------
  * Whoops Service Provider
  * ------------------------------------------------------------
  *
- * If $app'debug] is true we register the Whoops Service
+ * If $app['debug] is true we register the Whoops Service
  * Provider
  *
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.1
  */
-if ($app['debug']) {
-    $app->register(new Thistle\App\Core\Provider\Whoops\WhoopsServiceProvider());
-}
+if ($app['debug']) $app->register(new Thistle\Core\Provider\Whoops\WhoopsServiceProvider());
 
 /**
  * ------------------------------------------------------------

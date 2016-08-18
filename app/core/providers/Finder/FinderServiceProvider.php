@@ -1,5 +1,5 @@
 <?php
-namespace Thistle\App\Core\Provider\Finder;
+namespace Thistle\Core\Provider\Finder;
 
 use Silex\Application;
 use Silex\ServiceProviderInterface;
@@ -13,7 +13,7 @@ use Symfony\Component\Finder\Finder;
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.9
  *
- * @package Thistle\App\Core\Provider\Finder
+ * @package Thistle\Core\Provider\Finder
  */
 class FinderServiceProvider implements ServiceProviderInterface
 {

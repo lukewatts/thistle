@@ -10,7 +10,7 @@
  * @since 0.0.1
  */
 
-$app->get('/', 'Thistle\App\Controller\Page::home')->bind('home');
+$app->get('/', 'Thistle\Controller\Page::home')->bind('home');
 
 $app->get('/version', function () use ($app) {
     return $app['version'];

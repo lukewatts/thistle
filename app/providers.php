@@ -18,7 +18,7 @@ return [
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.9
      */
-    'Thistle\App\Core\Provider\Finder\FinderServiceProvider' => [],
+    'Thistle\Core\Provider\Finder\FinderServiceProvider' => [],
 
     /**
      * ------------------------------------------------------------
@@ -42,7 +42,7 @@ return [
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.7
      */
-    'Thistle\App\Core\Provider\Password\PasswordServiceProvider' => [
+    'Thistle\Core\Provider\Password\PasswordServiceProvider' => [
         'password.encryption' => PASSWORD_BCRYPT,
         'password.cost' => 8,
         'password.tolerance' => 0.05
@@ -59,7 +59,7 @@ return [
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.6
      */
-    'Thistle\App\Core\Provider\DoctrineORM\DoctrineORMServiceProvider' => [
+    'Thistle\Core\Provider\DoctrineORM\DoctrineORMServiceProvider' => [
         'orm.isDevMode' => true,
         'orm.paths'     => [
             __DIR__ . '/entities'
@@ -79,7 +79,7 @@ return [
      * @since 0.0.2
      */
     'Silex\Provider\DoctrineServiceProvider' => [
-        'db.options' => $config['db']
+        'db.options' => $app['config']['db']
     ],
 
     /**
@@ -108,7 +108,7 @@ return [
      * @author Luke Watts <luke@affinity4.ie>
      * @since 0.0.1
      */
-    'Thistle\App\Core\Provider\Model\ModelServiceProvider' => [
+    'Thistle\Core\Provider\Model\ModelServiceProvider' => [
         'models' => model_files_array()
     ],
 

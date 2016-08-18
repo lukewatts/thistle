@@ -1,12 +1,12 @@
 <?php
-namespace Thistle\App\Entity;
+namespace Thistle\Entity;
 
 /**
  * ------------------------------------------------------------
  * Class User
  * ------------------------------------------------------------
  *
- * @package App\Entity
+ * @package Thistle\Entity
  *
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.6

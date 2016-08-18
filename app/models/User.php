@@ -1,5 +1,5 @@
 <?php
-namespace Thistle\App\Model;
+namespace Thistle\Model;
 
 /**
  * ------------------------------------------------------------

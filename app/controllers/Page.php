@@ -1,8 +1,8 @@
 <?php
-namespace Thistle\App\Controller;
+namespace Thistle\Controller;
 
-use Silex\Application;
-use Thistle\App\Entity\User;
+use Thistle\Application;
+use Thistle\Entity\User;
 
 /**
  * ------------------------------------------------------------

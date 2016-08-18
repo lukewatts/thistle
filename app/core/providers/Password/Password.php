@@ -1,12 +1,5 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: LukeWatts85
- * Date: 06/08/2016
- * Time: 10:04
- */
-
-namespace Thistle\App\Core\Provider\Password;
+namespace Thistle\Core\Provider\Password;
 
 /**
  * ------------------------------------------------------------
@@ -16,7 +9,7 @@ namespace Thistle\App\Core\Provider\Password;
  * Handles password hashing and verifying. Also finds the most
  * appropriate cost value for the current server resources.
  *
- * @package Thistle\App\Core\Provider\Password
+ * @package Thistle\Core\Provider\Password
  *
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.7

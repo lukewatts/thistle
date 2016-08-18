@@ -1,7 +1,7 @@
 <?php
-namespace Thistle\App\Controller;
+namespace Thistle\Controller;
 
-use Silex\Application;
+use Thistle\Application;
 
 /**
  * ------------------------------------------------------------

@@ -1,0 +1,13 @@
+{
+    "debug": true,
+    "url": "http://thistle.dev",
+    "assets_dir": "assets",
+    "db": {
+        "dbname": "thistle",
+        "host": "127.0.0.1",
+        "user": "root",
+        "password": "",
+        "driver": "pdo_mysql",
+        "charset": "utf8"
+    }
+}

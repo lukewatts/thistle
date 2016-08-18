@@ -1,5 +1,5 @@
 <?php
-namespace Thistle\App\Core\Provider\Model;
+namespace Thistle\Core\Provider\Model;
 
 use Doctrine\DBAL\Connection;
 
@@ -11,7 +11,7 @@ use Doctrine\DBAL\Connection;
  * Represents a base Repository.
  *
  * @author Luke Watts <luke@affinity4.ie>
- * @package App\Core\Provider\Model
+ * @package Thistle\Core\Provider\Model
  * @since 0.0.2
  */
 abstract class Model

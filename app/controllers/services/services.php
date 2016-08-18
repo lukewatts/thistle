@@ -1,8 +1,8 @@
 <?php
-namespace Thistle\App\Controller\Service;
+namespace Thistle\Controller\Service;
 
-use Silex\Application;
-use Thistle\App\Controller;
+use Thistle\Application;
+use Thistle\Controller;
 
 /**
  * ------------------------------------------------------------

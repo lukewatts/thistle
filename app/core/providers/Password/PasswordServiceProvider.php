@@ -1,9 +1,9 @@
 <?php
-namespace Thistle\App\Core\Provider\Password;
+namespace Thistle\Core\Provider\Password;
 
 use Silex\ServiceProviderInterface;
 use Silex\Application;
-use Thistle\App\Core\Provider\Password\Password;
+use Thistle\Core\Provider\Password\Password;
 
 /**
  * ------------------------------------------------------------
@@ -13,7 +13,7 @@ use Thistle\App\Core\Provider\Password\Password;
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.7
  *
- * @package Thistle\App\Core\Provider\Password
+ * @package Thistle\Core\Provider\Password
  */
 class PasswordServiceProvider implements ServiceProviderInterface
 {

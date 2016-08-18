@@ -10,12 +10,13 @@
     ],
     "autoload": {
         "psr-4": {
-            "Thistle\\App\\Controller\\": "app/controllers/",
-            "Thistle\\App\\Model\\": "app/models/",
-            "Thistle\\App\\Provider\\": "app/providers/",
-            "Thistle\\App\\Entity\\": "app/entities/",
-            "Thistle\\App\\Core\\Console\\": "app/core/console/",
-            "Thistle\\App\\Core\\Provider\\": "app/core/providers/",
+            "Thistle\\": "app/",
+            "Thistle\\Controller\\": "app/controllers/",
+            "Thistle\\Model\\": "app/models/",
+            "Thistle\\Provider\\": "app/providers/",
+            "Thistle\\Entity\\": "app/entities/",
+            "Thistle\\Core\\Console\\": "app/core/console/",
+            "Thistle\\Core\\Provider\\": "app/core/providers/",
             "Thistle\\Test\\": "tests/"
         }
     },

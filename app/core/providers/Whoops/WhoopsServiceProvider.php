@@ -1,5 +1,5 @@
 <?php
-namespace Thistle\App\Core\Provider\Whoops;
+namespace Thistle\Core\Provider\Whoops;
 /**
  * Whoops - php errors for cool kids
  * @author Filipe Dobreira <http://github.com/filp>

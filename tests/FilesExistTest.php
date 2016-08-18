@@ -44,7 +44,7 @@ class FilesExistTest extends TestCase
      */
     public function testAppFilesExists()
     {
-        $this->assertFileExists('app/config.php');
+        $this->assertFileExists('app/config.json');
         $this->assertFileExists('app/providers.php');
         $this->assertFileExists('app/routes.php');
     }

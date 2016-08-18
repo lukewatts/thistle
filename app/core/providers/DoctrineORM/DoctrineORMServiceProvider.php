@@ -1,5 +1,5 @@
 <?php
-namespace Thistle\App\Core\Provider\DoctrineORM;
+namespace Thistle\Core\Provider\DoctrineORM;
 
 use Silex\ServiceProviderInterface;
 use Silex\Application;
@@ -14,7 +14,7 @@ use Doctrine\ORM\EntityManager;
  * @author Luke Watts <luke@affinity4.ie>
  * @since 0.0.7
  *
- * @package Thistle\App\Core\Provider\DoctrineORM
+ * @package Thistle\Core\Provider\DoctrineORM
  */
 class DoctrineORMServiceProvider implements ServiceProviderInterface
 {

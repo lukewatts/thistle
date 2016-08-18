@@ -1,7 +1,7 @@
 <?php
-namespace Thistle\App\Model;
+namespace Thistle\Model;
 
-use App\Core\Provider\Model\Model;
+use Thistle\Core\Provider\Model\Model;
 
 /**
  * ------------------------------------------------------------
