@@ -126,15 +126,12 @@ INDEX;
 
     public function testApplication()
     {
-        $this->app->setConfig(dirname(__DIR__) . '/app/config.json');
+        require_once dirname(__DIR__) . '/app/core/init.php';
+
         $this->assertInternalType('array', $this->app->getConfig());
-
-        $this->app->setDebug($this->app->debug());
         $this->assertInternalType('boolean', $this->app->getDebug());
-
         $this->assertEquals($this->app->getConfig()['debug'], $this->app->getDebug());
-
-        $this->app->setUrl($this->app->url());
         $this->assertEquals($this->app->getConfig()['url'], $this->app->getUrl());
+        $this->assertInternalType('array', $this->app->getThistleProviders());
     }
 }

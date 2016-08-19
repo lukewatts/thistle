@@ -36,6 +36,11 @@ class Application extends \Silex\Application
     private $request;
 
     /**
+     * @var array
+     */
+    private $thistle_providers;
+
+    /**
      * ------------------------------------------------------------
      * App constructor
      * ------------------------------------------------------------
@@ -50,6 +55,15 @@ class Application extends \Silex\Application
     public function __construct(array $values = [])
     {
         parent::__construct($values);
+    }
+
+    public function providers($providers)
+    {
+        $this->setThistleProviders($providers);
+        foreach ($this->getThistleProviders() as $provider => $options) {
+            if (!is_array($options)) $this->register(new $options());
+            else $this->register(new $provider(), $options);
+        }
     }
 
     public function debug()
@@ -303,5 +317,21 @@ class Application extends \Silex\Application
     public function getRequest()
     {
         return $this->request;
+    }
+
+    /**
+     * @param array $thistle_providers
+     */
+    public function setThistleProviders($thistle_providers)
+    {
+        $this->thistle_providers = $thistle_providers;
+    }
+
+    /**
+     * @return array
+     */
+    public function getThistleProviders()
+    {
+        return $this->thistle_providers;
     }
 }
